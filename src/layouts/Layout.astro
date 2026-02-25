@@ -1,0 +1,27 @@
+---
+import Header from "../components/common/Header.astro";
+import Footer from "../components/common/Footer.astro";
+import SEOHead from "../components/common/SEOHead.astro";
+import WhatsAppButton from "../components/ui/WhatsAppButton.astro";
+import type { SEOProps } from "../types";
+import "../styles/global.css";
+
+interface Props extends SEOProps {}
+
+const seo = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <SEOHead {...seo} />
+    </head>
+    <body class="min-h-screen flex flex-col bg-gray-50">
+        <Header />
+        <main class="flex-1 pt-20">
+            <slot />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+    </body>
+</html>

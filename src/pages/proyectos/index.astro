@@ -1,0 +1,174 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+
+// Get all projects and sort by date (newest first)
+const allProjects = await getCollection("projects");
+const projects = allProjects.sort(
+    (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+        b.data.date.getTime() - a.data.date.getTime(),
+);
+
+// Get unique categories
+const categories = [
+    "Todos",
+    ...new Set(
+        projects.map((p: CollectionEntry<"projects">) => p.data.category),
+    ),
+];
+---
+
+<Layout
+    title="Proyectos de Carpintería y Remodelación"
+    description="Explora nuestros proyectos completados de framing, remodelación y carpintería personalizada en Phoenix, Scottsdale, Mesa y Tempe."
+>
+    <div class="container mx-auto px-4 py-16">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Nuestros Proyectos
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Cada proyecto representa nuestro compromiso con la calidad y la
+                satisfacción del cliente.
+            </p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            {
+                categories.map((category) => (
+                    <button
+                        class="category-filter px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2"
+                        data-category={category}
+                    >
+                        {category}
+                    </button>
+                ))
+            }
+        </div>
+
+        <!-- Projects Grid -->
+        {
+            projects.length > 0 ? (
+                <div
+                    id="projects-grid"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {projects.map((project: CollectionEntry<"projects">) => (
+                        <div
+                            class="project-item"
+                            data-category={project.data.category}
+                        >
+                            <ProjectCard project={project} />
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <div class="text-center py-16">
+                    <p class="text-gray-500 text-lg">
+                        Próximamente agregaremos proyectos aquí. ¡Mantente
+                        atento!
+                    </p>
+                </div>
+            )
+        }
+    </div>
+</Layout>
+
+<script>
+    // Category filter functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".category-filter");
+        const projectItems = document.querySelectorAll(".project-item");
+
+        // Set initial active state
+        const firstButton = filterButtons[0];
+        if (firstButton) {
+            firstButton.classList.add(
+                "bg-blue-600",
+                "text-white",
+                "border-blue-600",
+            );
+            firstButton.classList.remove(
+                "bg-white",
+                "text-gray-700",
+                "border-gray-300",
+                "hover:border-blue-600",
+            );
+        }
+
+        // Add inactive styles to other buttons
+        filterButtons.forEach((button, index) => {
+            if (index > 0) {
+                button.classList.add(
+                    "bg-white",
+                    "text-gray-700",
+                    "border-gray-300",
+                    "hover:border-blue-600",
+                );
+            }
+        });
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const category = button.getAttribute("data-category");
+
+                // Update active button
+                filterButtons.forEach((btn) => {
+                    btn.classList.remove(
+                        "bg-blue-600",
+                        "text-white",
+                        "border-blue-600",
+                    );
+                    btn.classList.add(
+                        "bg-white",
+                        "text-gray-700",
+                        "border-gray-300",
+                        "hover:border-blue-600",
+                    );
+                });
+
+                button.classList.add(
+                    "bg-blue-600",
+                    "text-white",
+                    "border-blue-600",
+                );
+                button.classList.remove(
+                    "bg-white",
+                    "text-gray-700",
+                    "border-gray-300",
+                    "hover:border-blue-600",
+                );
+
+                // Filter projects
+                projectItems.forEach((item) => {
+                    const htmlItem = item as HTMLElement;
+                    const itemCategory = htmlItem.getAttribute("data-category");
+
+                    if (category === "Todos" || itemCategory === category) {
+                        htmlItem.style.display = "block";
+                        setTimeout(() => {
+                            htmlItem.style.opacity = "1";
+                            htmlItem.style.transform = "scale(1)";
+                        }, 10);
+                    } else {
+                        htmlItem.style.opacity = "0";
+                        htmlItem.style.transform = "scale(0.95)";
+                        setTimeout(() => {
+                            htmlItem.style.display = "none";
+                        }, 200);
+                    }
+                });
+            });
+        });
+
+        // Set initial styles for smooth animation
+        projectItems.forEach((item) => {
+            const htmlItem = item as HTMLElement;
+            htmlItem.style.transition = "opacity 0.2s, transform 0.2s";
+        });
+    });
+</script>

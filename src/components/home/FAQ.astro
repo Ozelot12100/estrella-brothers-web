@@ -1,0 +1,142 @@
+---
+const faqs = [
+    {
+        question: "¿Tienen licencia y seguro comercial?",
+        answer: "Sí, operamos con todas las licencias necesarias del estado de Arizona y contamos con seguro de responsabilidad civil (General Liability) para garantizar la seguridad de su proyecto y su propiedad.",
+    },
+    {
+        question: "¿Cómo funciona el proceso de cotización?",
+        answer: "El proceso es simple y sin compromiso. Nos contacta con su idea, agendamos una visita a su propiedad para tomar medidas y entender sus necesidades exactas, y en un plazo de 24-48 horas le entregamos un presupuesto detallado.",
+    },
+    {
+        question: "¿En qué áreas de Arizona trabajan?",
+        answer: "Principalmente prestamos servicios en el Área Metropolitana de Phoenix, incluyendo Scottsdale, Mesa, Tempe, Chandler, Gilbert y ciudades colindantes.",
+    },
+    {
+        question: "¿Garantizan sus trabajos de carpintería y remodelación?",
+        answer: "Absolutamente. Ofrecemos garantía por escrito en toda la mano de obra. Utilizamos materiales de alta calidad y seguimos los códigos de construcción vigentes para asegurar que el trabajo perdure.",
+    },
+    {
+        question: "¿Se encargan de los permisos con la ciudad?",
+        answer: "Sí, dependiendo del tamaño y tipo de proyecto, nosotros nos encargamos de todo el proceso de planos y permisos con la ciudad correspondiente para que usted no tenga que preocuparse por la burocracia.",
+    },
+];
+---
+
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-16">
+            <div
+                class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 font-semibold rounded-full mb-6"
+            >
+                FAQ
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Preguntas Frecuentes
+            </h2>
+            <p class="text-xl text-gray-600">
+                Resolvemos las dudas más comunes sobre nuestros servicios y
+                procesos de trabajo.
+            </p>
+        </div>
+
+        <div class="space-y-4">
+            {
+                faqs.map((faq, index) => (
+                    <div class="border border-gray-200 rounded-xl overflow-hidden bg-white hover:border-blue-300 transition-colors">
+                        <button
+                            class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                            aria-expanded="false"
+                            aria-controls={`faq-answer-${index}`}
+                        >
+                            <span class="text-lg font-bold text-gray-900 pr-8">
+                                {faq.question}
+                            </span>
+                            <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 faq-icon">
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </div>
+                        </button>
+                        <div
+                            id={`faq-answer-${index}`}
+                            class="faq-content h-0 overflow-hidden transition-all duration-300 ease-in-out opacity-0"
+                        >
+                            <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100">
+                                {faq.answer}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-12 text-center">
+            <p class="text-gray-600 mb-4">¿Tiene alguna otra pregunta?</p>
+            <a
+                href="/contacto"
+                class="text-blue-600 font-bold hover:text-blue-800 hover:underline"
+            >
+                Contáctenos directamente &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const faqButtons = document.querySelectorAll(".faq-button");
+        let currentlyOpen: HTMLElement | null = null;
+        let currentIcon: HTMLElement | null = null;
+
+        faqButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const content = button.nextElementSibling as HTMLElement;
+                const icon = button.querySelector(".faq-icon") as HTMLElement;
+                const isExpanded =
+                    button.getAttribute("aria-expanded") === "true";
+
+                // Close currently open FAQ if it's not the one being clicked
+                if (currentlyOpen && currentlyOpen !== content) {
+                    currentlyOpen.style.height = "0px";
+                    currentlyOpen.style.opacity = "0";
+                    currentlyOpen.previousElementSibling?.setAttribute(
+                        "aria-expanded",
+                        "false",
+                    );
+                    if (currentIcon) {
+                        currentIcon.style.transform = "rotate(0deg)";
+                    }
+                }
+
+                if (!isExpanded) {
+                    // Open the clicked FAQ
+                    content.style.height = content.scrollHeight + "px";
+                    content.style.opacity = "1";
+                    button.setAttribute("aria-expanded", "true");
+                    icon.style.transform = "rotate(180deg)";
+                    currentlyOpen = content;
+                    currentIcon = icon;
+                } else {
+                    // Close the clicked FAQ
+                    content.style.height = "0px";
+                    content.style.opacity = "0";
+                    button.setAttribute("aria-expanded", "false");
+                    icon.style.transform = "rotate(0deg)";
+                    currentlyOpen = null;
+                    currentIcon = null;
+                }
+            });
+        });
+    });
+</script>

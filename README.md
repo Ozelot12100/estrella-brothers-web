@@ -1,43 +1,101 @@
-# Astro Starter Kit: Minimal
+# Portfolio Luis Estrella - Carpintería Profesional en Phoenix, AZ
 
-```sh
-pnpm create astro@latest -- --template minimal
+Sitio web estático de alto rendimiento construido con Astro 5, TypeScript y Tailwind CSS para mostrar proyectos de carpintería y remodelaciones.
+
+## 🚀 Estructura del Proyecto
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
+├── public/              # Archivos estáticos (favicon, robots.txt)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/
+│   │   └── projects/    # Imágenes de proyectos (1920px max)
+│   ├── components/
+│   │   ├── common/      # Header, Footer, SEOHead
+│   │   ├── projects/    # ProjectCard, BeforeAfterSlider
+│   │   └── ui/          # Button, etc.
+│   ├── config/
+│   │   └── site.ts      # Configuración del sitio
+│   ├── content/
+│   │   ├── config.ts    # Schema de Content Collections
+│   │   └── projects/    # Archivos .md de cada proyecto
+│   ├── layouts/
+│   │   └── Layout.astro # Layout base con SEO
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── contacto.astro
+│   │   └── proyectos/
+│   │       ├── index.astro    # Galería
+│   │       └── [slug].astro   # Detalle del proyecto
+│   ├── styles/
+│   │   └── global.css
+│   └── types/
+│       └── index.ts     # Tipos TypeScript globales
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📋 Comandos Disponibles
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Comando          | Acción                                      |
+|:-----------------|:--------------------------------------------|
+| `pnpm install`   | Instalar dependencias                       |
+| `pnpm dev`       | Iniciar servidor de desarrollo en `localhost:4321` |
+| `pnpm build`     | Compilar sitio para producción en `./dist/` |
+| `pnpm preview`   | Vista previa del build antes de deploy      |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🎨 Personalización
 
-## 🧞 Commands
+### Información del Negocio
 
-All commands are run from the root of the project, from a terminal:
+Edita `src/config/site.ts` para actualizar:
+- Nombre del negocio
+- Teléfono y email
+- Áreas de servicio
+- Tipos de servicios
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+### Agregar Proyectos
 
-## 👀 Want to learn more?
+Lee la guía completa en `GUIA_PROYECTOS.md`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🚢 Despliegue
+
+### Vercel (Recomendado)
+
+1. Haz push a GitHub
+2. Importa el proyecto en [Vercel](https://vercel.com)
+3. Configura el dominio personalizado
+
+### Netlify
+
+1. Haz push a GitHub
+2. Importa el proyecto en [Netlify](https://netlify.com)
+3. Build command: `pnpm build`
+4. Publish directory: `dist`
+
+## 🔧 Stack Tecnológico
+
+- **Framework:** Astro 5.x
+- **Estilos:** Tailwind CSS v4
+- **Lenguaje:** TypeScript (Strict)
+- **Optimización de Imágenes:** astro:assets + Sharp
+- **SEO:** @astrojs/sitemap + Schema.org
+- **Interactividad:** Web Components (img-comparison-slider)
+
+## 📱 Características
+
+✅ Optimización automática de imágenes (WebP/AVIF)  
+✅ Slider "Antes y Después" para proyectos  
+✅ SEO local optimizado para Phoenix, AZ  
+✅ Core Web Vitals optimizados  
+✅ 100% estático (sin servidor)  
+✅ Responsive design  
+✅ Formulario de contacto (Netlify Forms)
+
+## 📞 Soporte
+
+Para dudas técnicas, consulta la documentación de:
+- [Astro](https://docs.astro.build)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Content Collections](https://docs.astro.build/en/guides/content-collections/)

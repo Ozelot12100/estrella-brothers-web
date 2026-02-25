@@ -1,0 +1,99 @@
+---
+import { siteConfig } from "../../config/site";
+
+const navItems = [
+    { name: "Inicio", href: "/" },
+    { name: "Proyectos", href: "/proyectos" },
+    { name: "Contacto", href: "/contacto" },
+];
+---
+
+<header
+    class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200"
+>
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-bold text-gray-900">
+                {siteConfig.name}
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex items-center gap-8">
+                {
+                    navItems.map((item) => (
+                        <li>
+                            <a
+                                href={item.href}
+                                class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                            >
+                                {item.name}
+                            </a>
+                        </li>
+                    ))
+                }
+                <li>
+                    <a
+                        href={`tel:${siteConfig.author.phone}`}
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                    >
+                        Llamar Ahora
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button
+                id="mobile-menu-button"
+                class="md:hidden p-2 text-gray-700"
+                aria-label="Toggle menu"
+            >
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <ul id="mobile-menu" class="hidden md:hidden pt-4 pb-2 space-y-2">
+            {
+                navItems.map((item) => (
+                    <li>
+                        <a
+                            href={item.href}
+                            class="block py-2 text-gray-700 hover:text-blue-600"
+                        >
+                            {item.name}
+                        </a>
+                    </li>
+                ))
+            }
+            <li>
+                <a
+                    href={`tel:${siteConfig.author.phone}`}
+                    class="block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center"
+                >
+                    Llamar Ahora
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+    const button = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    button?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+    });
+</script>

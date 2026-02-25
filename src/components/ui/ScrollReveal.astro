@@ -1,0 +1,92 @@
+---
+
+---
+
+<!-- 
+ScrollReveal component injects a script that automatically observes 
+elements with the 'reveal-on-scroll' class and animates them when they enter the viewport.
+-->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Setup intersection observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15, // Trigger when 15% visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Add animate class to trigger CSS transition
+                    entry.target.classList.add("is-revealed");
+                    // Stop observing once animated
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Make sure to find elements that might be added dynamically later too
+        // For static astro pages, querying on DOMContentLoaded is usually enough
+        const revealElements = document.querySelectorAll(".reveal-on-scroll");
+        revealElements.forEach((el) => observer.observe(el));
+    });
+</script>
+
+<style is:global>
+    /* Base styles for scroll completely hidden at start */
+    .reveal-on-scroll {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        will-change: opacity, transform, visibility;
+    }
+
+    /* Animation effects */
+    .reveal-fade-up {
+        transform: translateY(40px);
+    }
+
+    .reveal-fade-left {
+        transform: translateX(-40px);
+    }
+
+    .reveal-fade-right {
+        transform: translateX(40px);
+    }
+
+    .reveal-scale {
+        transform: scale(0.9);
+    }
+
+    /* When observer triggers */
+    .is-revealed {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0) scale(1);
+    }
+
+    /* Delays for staggered animations in grids */
+    .delay-100 {
+        transition-delay: 100ms;
+    }
+    .delay-200 {
+        transition-delay: 200ms;
+    }
+    .delay-300 {
+        transition-delay: 300ms;
+    }
+    .delay-400 {
+        transition-delay: 400ms;
+    }
+
+    /* Disable animations if user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .reveal-on-scroll {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            transition: none;
+        }
+    }
+</style>

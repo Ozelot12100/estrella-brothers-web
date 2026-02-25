@@ -1,0 +1,85 @@
+---
+import type { SEOProps } from "../../types";
+import { siteConfig } from "../../config/site";
+
+interface Props extends SEOProps {}
+
+const {
+    title,
+    description,
+    image = "/og-image.jpg",
+    article = false,
+    noindex = false,
+    type = "website",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle =
+    title === siteConfig.title ? title : `${title} | ${siteConfig.name}`;
+const ogImage = new URL(image, Astro.site);
+---
+
+<!-- Primary Meta Tags -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Additional SEO -->
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+{article && <meta property="article:author" content={siteConfig.author.name} />}
+
+<!-- Local Business Schema.org -->
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        name: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+        telephone: siteConfig.author.phone,
+        email: siteConfig.author.email,
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Phoenix",
+            addressRegion: "AZ",
+            addressCountry: "US",
+        },
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: "33.4484",
+            longitude: "-112.0740",
+        },
+        areaServed: siteConfig.business.areaServed.map((area) => ({
+            "@type": "City",
+            name: area,
+        })),
+        serviceType: siteConfig.business.serviceTypes,
+        priceRange: "$$",
+    })}
+/>
