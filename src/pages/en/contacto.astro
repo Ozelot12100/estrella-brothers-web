@@ -1,12 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Button from "../components/ui/Button.astro";
-import { siteConfig } from "../config/site";
+import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/ui/Button.astro";
+import { siteConfig } from "../../config/site";
 ---
 
 <Layout
-    title="Contacto"
-    description={`Contacta a ${siteConfig.name} para servicios de carpintería y remodelaciones en Phoenix, AZ. Presupuestos gratuitos.`}
+    title="Contact"
+    description={`Contact ${siteConfig.name} for carpentry and remodeling services in Phoenix, AZ. Free estimates.`}
 >
     <div class="container mx-auto px-4 py-16">
         <!-- Header -->
@@ -14,13 +14,13 @@ import { siteConfig } from "../config/site";
             <h1
                 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
             >
-                Solicita tu Presupuesto
+                Request Your Estimate
             </h1>
             <p
                 class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             >
-                Estamos listos para transformar tu proyecto en realidad.
-                Contáctanos hoy mismo.
+                We are ready to transform your project into reality. Contact us
+                today.
             </p>
         </div>
 
@@ -32,17 +32,17 @@ import { siteConfig } from "../config/site";
                 <h2
                     class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6"
                 >
-                    Envíanos un Mensaje
+                    Send us a Message
                 </h2>
 
                 <form id="contact-form" class="space-y-6" data-web3forms="true">
-                    <!-- Reemplaza con tu Access Key pública real de Web3Forms -->
+                    <!-- Replace with your actual Web3Forms public Access Key -->
                     <input
                         type="hidden"
                         name="access_key"
                         value="YOUR_ACCESS_KEY_HERE"
                     />
-                    <!-- Checkbox anti-spam oculto -->
+                    <!-- Hidden anti-spam checkbox -->
                     <input
                         type="checkbox"
                         name="botcheck"
@@ -55,7 +55,7 @@ import { siteConfig } from "../config/site";
                             for="name"
                             class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                         >
-                            Nombre Completo
+                            Full Name
                         </label>
                         <input
                             type="text"
@@ -63,7 +63,7 @@ import { siteConfig } from "../config/site";
                             name="name"
                             required
                             class="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                            placeholder="Juan Pérez"
+                            placeholder="John Doe"
                         />
                     </div>
 
@@ -72,7 +72,7 @@ import { siteConfig } from "../config/site";
                             for="phone"
                             class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                         >
-                            Teléfono
+                            Phone
                         </label>
                         <input
                             type="tel"
@@ -97,7 +97,7 @@ import { siteConfig } from "../config/site";
                             name="email"
                             required
                             class="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                            placeholder="ejemplo@email.com"
+                            placeholder="example@email.com"
                         />
                     </div>
 
@@ -106,7 +106,7 @@ import { siteConfig } from "../config/site";
                             for="service"
                             class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                         >
-                            Tipo de Servicio
+                            Type of Service
                         </label>
                         <select
                             id="service"
@@ -114,7 +114,7 @@ import { siteConfig } from "../config/site";
                             required
                             class="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                         >
-                            <option value="">Selecciona un servicio</option>
+                            <option value="">Select a service</option>
                             {
                                 siteConfig.business.serviceTypes.map(
                                     (service) => (
@@ -132,7 +132,7 @@ import { siteConfig } from "../config/site";
                             for="message"
                             class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
                         >
-                            Mensaje
+                            Message
                         </label>
                         <textarea
                             id="message"
@@ -140,7 +140,7 @@ import { siteConfig } from "../config/site";
                             rows="4"
                             required
                             class="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors"
-                            placeholder="Cuéntanos sobre tu proyecto..."
+                            placeholder="Tell us about your project..."
                         ></textarea>
                     </div>
 
@@ -151,7 +151,7 @@ import { siteConfig } from "../config/site";
                         class="w-full relative overflow-hidden group"
                         id="submit-btn"
                     >
-                        <span id="btn-text">Enviar Mensaje</span>
+                        <span id="btn-text">Send Message</span>
                         <div
                             id="btn-spinner"
                             class="absolute inset-0 flex items-center justify-center bg-blue-700 opacity-0 hidden"
@@ -184,16 +184,16 @@ import { siteConfig } from "../config/site";
                         class="hidden p-4 mb-4 text-sm text-green-800 dark:text-green-200 rounded-lg bg-green-50 dark:bg-green-900/30"
                         role="alert"
                     >
-                        ¡Mensaje enviado con éxito! Nos pondremos en contacto
-                        contigo pronto.
+                        Message sent successfully! We will get in touch with you
+                        shortly.
                     </div>
                     <div
                         id="form-error"
                         class="hidden p-4 mb-4 text-sm text-red-800 dark:text-red-200 rounded-lg bg-red-50 dark:bg-red-900/30"
                         role="alert"
                     >
-                        Hubo un error al enviar el mensaje. Por favor, inténtalo
-                        de nuevo o contáctanos por teléfono.
+                        There was an error sending the message. Please try again
+                        or contact us by phone.
                     </div>
                 </form>
             </div>
@@ -224,7 +224,7 @@ import { siteConfig } from "../config/site";
                             <h3
                                 class="font-bold text-gray-900 dark:text-gray-100 mb-2"
                             >
-                                Llámanos
+                                Call Us
                             </h3>
                             <a
                                 href={`tel:${siteConfig.author.phone}`}
@@ -235,7 +235,7 @@ import { siteConfig } from "../config/site";
                             <p
                                 class="text-sm text-gray-600 dark:text-gray-400 mt-1"
                             >
-                                Lunes a Sábado: 7am - 6pm
+                                Monday to Saturday: 7am - 6pm
                             </p>
                         </div>
                     </div>
@@ -276,7 +276,7 @@ import { siteConfig } from "../config/site";
                             <p
                                 class="text-sm text-gray-600 dark:text-gray-400 mt-1"
                             >
-                                Respuesta en 24 horas
+                                Response within 24 hours
                             </p>
                         </div>
                     </div>
@@ -313,7 +313,7 @@ import { siteConfig } from "../config/site";
                             <h3
                                 class="font-bold text-gray-900 dark:text-gray-100 mb-2"
                             >
-                                Área de Servicio
+                                Service Area
                             </h3>
                             <p class="text-gray-700 dark:text-gray-300">
                                 {siteConfig.business.areaServed.join(", ")}

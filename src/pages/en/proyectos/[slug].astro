@@ -2,10 +2,10 @@
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import BeforeAfterSlider from "../../components/projects/BeforeAfterSlider.astro";
-import Button from "../../components/ui/Button.astro";
+import BeforeAfterSlider from "../../../components/projects/BeforeAfterSlider.astro";
+import Button from "../../../components/ui/Button.astro";
 
 export const getStaticPaths = (async () => {
     const projects = await getCollection("projects");
@@ -49,17 +49,16 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
             >
                 <li>
                     <a
-                        href="/"
+                        href="/en"
                         class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >Inicio</a
-                    >
+                        >Home</a>
                 </li>
                 <li>/</li>
                 <li>
                     <a
-                        href="/proyectos"
+                        href="/en/proyectos"
                         class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >Proyectos</a
+                        >Projects</a
                     >
                 </li>
                 <li>/</li>
@@ -80,22 +79,18 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
                 {
                     tags &&
                         tags.map((tag: string) => (
-                            <span class="bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 text-sm px-3 py-1 rounded-full">
+                            <span class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
                                 {tag}
                             </span>
                         ))
                 }
             </div>
 
-            <h1
-                class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
-            >
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 {title}
             </h1>
 
-            <div
-                class="flex items-center gap-4 text-gray-600 dark:text-gray-400"
-            >
+            <div class="flex items-center gap-4 text-gray-600">
                 <div class="flex items-center gap-2">
                     <svg
                         class="w-5 h-5"
@@ -146,14 +141,12 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
         }
 
         <!-- Project Description -->
-        <div class="prose dark:prose-invert prose-lg max-w-none mb-12">
-            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                {description}
-            </p>
+        <div class="prose prose-lg max-w-none mb-12">
+            <p class="text-xl text-gray-700 leading-relaxed">{description}</p>
         </div>
 
         <!-- Project Content (from markdown) -->
-        <div class="prose dark:prose-invert prose-lg max-w-none mb-12">
+        <div class="prose prose-lg max-w-none mb-12">
             <Content />
         </div>
 
@@ -161,16 +154,13 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
         <div
             class="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white"
         >
-            <h2 class="text-3xl font-bold mb-4">
-                ¿Tienes un Proyecto Similar?
-            </h2>
+            <h2 class="text-3xl font-bold mb-4">Have a Similar Project?</h2>
             <p class="text-lg mb-8 opacity-90">
-                Obtén un presupuesto gratuito y sin compromiso para tu próximo
-                proyecto.
+                Get a free, no-obligation estimate for your next project.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button href="/contacto" variant="secondary" size="lg">
-                    Solicitar Presupuesto
+                <Button href="/en/contacto" variant="secondary" size="lg">
+                    Request Estimate
                 </Button>
                 <Button
                     href="tel:+14800000000"
@@ -178,7 +168,7 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
                     size="lg"
                     class="border-white text-white hover:bg-white hover:text-blue-600"
                 >
-                    Llamar Ahora
+                    Call Now
                 </Button>
             </div>
         </div>
@@ -186,7 +176,7 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
         <!-- Back to Projects -->
         <div class="mt-12 text-center">
             <a
-                href="/proyectos"
+                href="/en/proyectos"
                 class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
             >
                 <svg
@@ -201,7 +191,7 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
                         stroke-width="2"
                         d="M15 19l-7-7 7-7"></path>
                 </svg>
-                Ver Todos los Proyectos
+                View All Projects
             </a>
         </div>
     </article>

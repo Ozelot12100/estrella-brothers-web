@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 interface Props {
     project: CollectionEntry<"projects">;
@@ -10,6 +11,10 @@ const { project } = Astro.props;
 const { title, category, location, description, coverImage, date } =
     project.data;
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const basePath = lang === "en" ? "/en/proyectos" : "/proyectos";
+
 // Format date
 const formattedDate = new Intl.DateTimeFormat("es-US", {
     year: "numeric",
@@ -18,9 +23,9 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
 ---
 
 <article
-    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+    class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
 >
-    <a href={`/proyectos/${project.slug}`} class="block">
+    <a href={`${basePath}/${project.slug}`} class="block">
         <!-- Image Container -->
         <div class="relative aspect-[4/3] overflow-hidden bg-gray-200">
             <Image
@@ -35,7 +40,7 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
             <!-- Category Badge -->
             <div class="absolute top-4 left-4">
                 <span
-                    class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
+                    class="bg-blue-600 dark:bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-full"
                 >
                     {category}
                 </span>
@@ -44,7 +49,9 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
 
         <!-- Content -->
         <div class="p-6">
-            <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+            <div
+                class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2"
+            >
                 <svg
                     class="w-4 h-4"
                     fill="none"
@@ -69,19 +76,19 @@ const formattedDate = new Intl.DateTimeFormat("es-US", {
             </div>
 
             <h3
-                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+                class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
             >
                 {title}
             </h3>
 
-            <p class="text-gray-600 line-clamp-2">
+            <p class="text-gray-600 dark:text-gray-400 line-clamp-2">
                 {description}
             </p>
 
             <div
-                class="mt-4 flex items-center text-blue-600 font-semibold text-sm"
+                class="mt-4 flex items-center text-blue-600 dark:text-blue-400 font-semibold text-sm"
             >
-                Ver detalles
+                {t("project.viewDetails")}
                 <svg
                     class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
                     fill="none"

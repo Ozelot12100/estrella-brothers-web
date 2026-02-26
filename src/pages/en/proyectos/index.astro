@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import ProjectCard from "../../components/projects/ProjectCard.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ProjectCard from "../../../components/projects/ProjectCard.astro";
 
 // Get all projects and sort by date (newest first)
 const allProjects = await getCollection("projects");
@@ -13,7 +13,7 @@ const projects = allProjects.sort(
 
 // Get unique categories
 const categories = [
-    "Todos",
+    "All",
     ...new Set(
         projects.map((p: CollectionEntry<"projects">) => p.data.category),
     ),
@@ -21,8 +21,8 @@ const categories = [
 ---
 
 <Layout
-    title="Proyectos de Carpintería y Remodelación"
-    description="Explora nuestros proyectos completados de framing, remodelación y carpintería personalizada en Phoenix, Scottsdale, Mesa y Tempe."
+    title="Carpentry and Remodeling Projects"
+    description="Explore our completed framing, remodeling, and custom carpentry projects in Phoenix, Scottsdale, Mesa, and Tempe."
 >
     <div class="container mx-auto px-4 py-16">
         <!-- Header -->
@@ -30,13 +30,13 @@ const categories = [
             <h1
                 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
             >
-                Nuestros Proyectos
+                Our Projects
             </h1>
             <p
                 class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             >
-                Cada proyecto representa nuestro compromiso con la calidad y la
-                satisfacción del cliente.
+                Each project represents our commitment to quality and customer
+                satisfaction.
             </p>
         </div>
 
@@ -73,8 +73,7 @@ const categories = [
             ) : (
                 <div class="text-center py-16">
                     <p class="text-gray-500 dark:text-gray-400 text-lg">
-                        Próximamente agregaremos proyectos aquí. ¡Mantente
-                        atento!
+                        We will be adding projects here soon. Stay tuned!
                     </p>
                 </div>
             )
@@ -168,7 +167,7 @@ const categories = [
                     const htmlItem = item as HTMLElement;
                     const itemCategory = htmlItem.getAttribute("data-category");
 
-                    if (category === "Todos" || itemCategory === category) {
+                    if (category === "All" || itemCategory === category) {
                         htmlItem.style.display = "block";
                         setTimeout(() => {
                             htmlItem.style.opacity = "1";

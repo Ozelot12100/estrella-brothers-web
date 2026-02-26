@@ -1,5 +1,9 @@
 ---
-const testimonials = [
+import { getLangFromUrl } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const testimonialsEs = [
     {
         name: "Carlos Rodríguez",
         role: "Propietario en Scottsdale",
@@ -22,29 +26,67 @@ const testimonials = [
         rating: 5,
     },
 ];
+
+const testimonialsEn = [
+    {
+        name: "Carlos Rodríguez",
+        role: "Homeowner in Scottsdale",
+        content:
+            "Luis and his team did an incredible job remodeling our kitchen. The attention to detail on the cabinets and framing was exceptional. They were on time, clean, and very professional. Highly recommended.",
+        rating: 5,
+    },
+    {
+        name: "María Fernández",
+        role: "Homeowner in Phoenix",
+        content:
+            "We hired Luis to do the framing for our addition. The city inspector even mentioned the excellent quality of the woodwork. We will definitely hire him again for future projects.",
+        rating: 5,
+    },
+    {
+        name: "David Smith",
+        role: "Homeowner in Mesa",
+        content:
+            "The custom deck they built in our backyard exceeded all our expectations. They were very transparent throughout the process and finished on time and within budget.",
+        rating: 5,
+    },
+];
+
+const testimonials = lang === "en" ? testimonialsEn : testimonialsEs;
+
+const isEn = lang === "en";
+const badgeText = isEn ? "Testimonials" : "Testimonios";
+const titleText = isEn
+    ? "What Our Clients Say"
+    : "Lo Que Dicen Nuestros Clientes";
+const subtitleText = isEn
+    ? "Our clients' satisfaction is our greatest pride and our best letter of recommendation."
+    : "La satisfacción de nuestros clientes es nuestro mayor orgullo y nuestra mejor carta de presentación.";
 ---
 
-<section class="py-24 bg-gray-50">
+<section
+    class="py-24 bg-gray-50 dark:bg-slate-900 transition-colors duration-300"
+>
     <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <div
-                class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 font-semibold rounded-full mb-6"
+                class="inline-block px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-semibold rounded-full mb-6"
             >
-                Testimonios
+                {badgeText}
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Lo Que Dicen Nuestros Clientes
+            <h2
+                class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+            >
+                {titleText}
             </h2>
-            <p class="text-xl text-gray-600">
-                La satisfacción de nuestros clientes es nuestro mayor orgullo y
-                nuestra mejor carta de presentación.
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                {subtitleText}
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             {
                 testimonials.map((testimonial) => (
-                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative">
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative">
                         <div class="text-blue-600 mb-6 flex">
                             {[...Array(testimonial.rating)].map(() => (
                                 <svg
@@ -64,19 +106,19 @@ const testimonials = [
                             <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                         </svg>
 
-                        <p class="text-gray-700 text-lg mb-8 relative z-10 leading-relaxed">
+                        <p class="text-gray-700 dark:text-gray-300 text-lg mb-8 relative z-10 leading-relaxed">
                             "{testimonial.content}"
                         </p>
 
-                        <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl uppercase">
+                        <div class="flex items-center gap-4 border-t border-gray-100 dark:border-slate-700 pt-6">
+                            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-xl uppercase">
                                 {testimonial.name.charAt(0)}
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900">
+                                <h4 class="font-bold text-gray-900 dark:text-gray-100">
                                     {testimonial.name}
                                 </h4>
-                                <p class="text-sm text-gray-500">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
                                     {testimonial.role}
                                 </p>
                             </div>

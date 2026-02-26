@@ -1,15 +1,15 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import AboutSection from "../components/home/AboutSection.astro";
-import Testimonials from "../components/home/Testimonials.astro";
-import FAQ from "../components/home/FAQ.astro";
-import ScrollReveal from "../components/ui/ScrollReveal.astro";
-import ProjectCard from "../components/projects/ProjectCard.astro";
-import Button from "../components/ui/Button.astro";
-import { siteConfig } from "../config/site";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+import AboutSection from "../../components/home/AboutSection.astro";
+import Testimonials from "../../components/home/Testimonials.astro";
+import FAQ from "../../components/home/FAQ.astro";
+import ScrollReveal from "../../components/ui/ScrollReveal.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import Button from "../../components/ui/Button.astro";
+import { siteConfig } from "../../config/site";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -310,3 +310,4 @@ const featuredProjects = allProjects
 		</div>
 	</section>
 </Layout>
+

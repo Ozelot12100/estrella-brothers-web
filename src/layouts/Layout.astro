@@ -4,19 +4,43 @@ import Footer from "../components/common/Footer.astro";
 import SEOHead from "../components/common/SEOHead.astro";
 import WhatsAppButton from "../components/ui/WhatsAppButton.astro";
 import type { SEOProps } from "../types";
+import { getLangFromUrl } from "../i18n/utils";
 import "../styles/global.css";
 
 interface Props extends SEOProps {}
 
 const seo = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang} class="scroll-smooth">
     <head>
         <SEOHead {...seo} />
+        <script is:inline>
+            const theme = (() => {
+                if (
+                    typeof localStorage !== "undefined" &&
+                    localStorage.getItem("theme")
+                ) {
+                    return localStorage.getItem("theme");
+                }
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    return "dark";
+                }
+                return "light";
+            })();
+            if (theme === "light") {
+                document.documentElement.classList.remove("dark");
+            } else {
+                document.documentElement.classList.add("dark");
+            }
+            window.localStorage.setItem("theme", theme);
+        </script>
     </head>
-    <body class="min-h-screen flex flex-col bg-gray-50">
+    <body
+        class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300"
+    >
         <Header />
         <main class="flex-1 pt-20">
             <slot />

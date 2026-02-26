@@ -5,8 +5,16 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://luisestrella.com',
+  site: 'https://estrellabrotherscarpinters.com',
   output: 'static',
+
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    }
+  },
 
   // Integrations
   integrations: [sitemap()],
@@ -20,6 +28,7 @@ export default defineConfig({
 
   // Vite configuration
   vite: {
+    // @ts-expect-error Types for Tailwind Vite plugin currently conflict with Astro's Vite types
     plugins: [tailwindcss()],
   },
 
