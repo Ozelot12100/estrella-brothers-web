@@ -3,9 +3,11 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+import mcp from 'astro-mcp';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://estrellabrotherscarpinters.com',
+  site: 'https://estrellabrotherscarpentry.com',
   output: 'static',
 
   i18n: {
@@ -17,7 +19,7 @@ export default defineConfig({
   },
 
   // Integrations
-  integrations: [sitemap()],
+  integrations: [sitemap(), mcp()],
 
   // Image optimization
   image: {

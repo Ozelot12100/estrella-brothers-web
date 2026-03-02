@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://luisestrella.com/sitemap-index.xml
+Sitemap: https://estrellabrotherscarpentry.com/sitemap-index.xml

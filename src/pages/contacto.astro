@@ -35,20 +35,7 @@ import { siteConfig } from "../config/site";
                     Envíanos un Mensaje
                 </h2>
 
-                <form id="contact-form" class="space-y-6" data-web3forms="true">
-                    <!-- Reemplaza con tu Access Key pública real de Web3Forms -->
-                    <input
-                        type="hidden"
-                        name="access_key"
-                        value="YOUR_ACCESS_KEY_HERE"
-                    />
-                    <!-- Checkbox anti-spam oculto -->
-                    <input
-                        type="checkbox"
-                        name="botcheck"
-                        class="hidden"
-                        style="display: none;"
-                    />
+                <form id="contact-form" class="space-y-6">
 
                     <div>
                         <label
@@ -343,62 +330,22 @@ import { siteConfig } from "../config/site";
         const formError = document.getElementById("form-error");
 
         if (form) {
-            form.addEventListener("submit", async (e) => {
+            form.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-                // Hide previous messages
-                formSuccess?.classList.add("hidden");
-                formError?.classList.add("hidden");
+                const formData = new FormData(form);
+                const object = Object.fromEntries(formData);
 
-                // Show loading state
-                if (submitBtn && btnText && btnSpinner) {
-                    submitBtn.disabled = true;
-                    btnText.classList.add("opacity-0");
-                    btnSpinner.classList.remove("hidden");
-                    btnSpinner.classList.replace("opacity-0", "opacity-100");
-                }
+                const phone = "14805146765";
+                const whatsappMessage = `Hola, mi nombre es ${object.name}.\n\nMe interesa un servicio de ${object.service}.\n\nMi teléfono es ${object.phone} y mi correo es ${object.email}.\n\nMensaje:\n${object.message}`;
 
-                try {
-                    const formData = new FormData(form);
-                    const object = Object.fromEntries(formData);
-                    const json = JSON.stringify(object);
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
 
-                    const response = await fetch(
-                        "https://api.web3forms.com/submit",
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Accept: "application/json",
-                            },
-                            body: json,
-                        },
-                    );
-
-                    const result = await response.json();
-
-                    if (response.status === 200) {
-                        formSuccess?.classList.remove("hidden");
-                        form.reset();
-                    } else {
-                        console.error("Web3Forms Error:", result);
-                        formError?.classList.remove("hidden");
-                    }
-                } catch (error) {
-                    console.error("Submission error:", error);
-                    formError?.classList.remove("hidden");
-                } finally {
-                    // Reset button state
-                    if (submitBtn && btnText && btnSpinner) {
-                        submitBtn.disabled = false;
-                        btnText.classList.remove("opacity-0");
-                        btnSpinner.classList.add("hidden");
-                        btnSpinner.classList.replace(
-                            "opacity-100",
-                            "opacity-0",
-                        );
-                    }
-                }
+                window.open(whatsappUrl, '_blank');
+                
+                formSuccess?.classList.remove("hidden");
+                form.reset();
             });
         }
     });

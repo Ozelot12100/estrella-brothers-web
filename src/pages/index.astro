@@ -159,9 +159,7 @@ const featuredProjects = allProjects
 								</h3>
 								<p class="text-gray-600 dark:text-gray-400">
 									{t("services.descPrefix")}
-									{t(
-										`service.${service}` as any,
-									).toLowerCase() || service.toLowerCase()}
+									{(t(`service.${service}` as any) || service).toLowerCase()}
 									{t("services.descSuffix")}
 								</p>
 							</div>
