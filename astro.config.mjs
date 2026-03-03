@@ -28,6 +28,11 @@ export default defineConfig({
     },
   },
 
+  // Dev server - fixed port so MCP URL in .vscode/mcp.json always matches
+  server: {
+    port: 4321,
+  },
+
   // Vite configuration
   vite: {
     // @ts-expect-error Types for Tailwind Vite plugin currently conflict with Astro's Vite types
