@@ -47,7 +47,7 @@ export const ui = {
         'service.Deck Building': 'Construcción de Decks',
         'service.Custom Carpentry': 'Carpintería Personalizada',
         'service.Acabados': 'Acabados Finos',
-        'footer.developer': 'Desarrollado con ❤️ por',
+        'footer.developer': 'Desarrollado por',
     },
     en: {
         'nav.home': 'Home',
@@ -90,6 +90,6 @@ export const ui = {
         'service.Deck Building': 'Deck Building',
         'service.Custom Carpentry': 'Custom Carpentry',
         'service.Acabados': 'Fine Finishes',
-        'footer.developer': 'Developed with ❤️ by',
+        'footer.developer': 'Developed by',
     },
 } as const;
