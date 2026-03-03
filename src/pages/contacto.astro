@@ -321,13 +321,7 @@ import { siteConfig } from "../config/site";
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("contact-form") as HTMLFormElement;
-        const submitBtn = document.getElementById(
-            "submit-btn",
-        ) as HTMLButtonElement;
-        const btnText = document.getElementById("btn-text");
-        const btnSpinner = document.getElementById("btn-spinner");
         const formSuccess = document.getElementById("form-success");
-        const formError = document.getElementById("form-error");
 
         if (form) {
             form.addEventListener("submit", (e) => {
