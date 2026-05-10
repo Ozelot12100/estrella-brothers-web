@@ -5,14 +5,17 @@ import { languages } from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 
 const currentPath = Astro.url.pathname;
-// Remove current language prefix to get the base path
-// English is default (no prefix), Spanish has /es/ prefix
 let pathWithoutLang = currentPath;
 if (currentPath.startsWith("/es/")) {
     pathWithoutLang = currentPath.replace("/es/", "/");
 } else if (currentPath === "/es") {
     pathWithoutLang = "/";
 }
+
+const flags: Record<string, string> = {
+    en: "🇺🇸",
+    es: "🇲🇽",
+};
 ---
 
 <div class="relative group">
@@ -31,6 +34,7 @@ if (currentPath.startsWith("/es/")) {
                 d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
             ></path></svg
         >
+        <span class="text-xl leading-none">{flags[lang] || ""}</span>
         <span class="uppercase">{lang}</span>
         <svg
             class="w-4 h-4"
@@ -59,8 +63,9 @@ if (currentPath.startsWith("/es/")) {
                                     ? pathWithoutLang
                                     : `/es${pathWithoutLang}`
                             }
-                            class={`block px-4 py-2 text-sm ${lang === code ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-700/50 font-bold" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"}`}
+                            class={`block px-4 py-2 text-sm flex items-center gap-2 ${lang === code ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-700/50 font-bold" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"}`}
                         >
+                            <span class="text-lg">{flags[code]}</span>
                             {name}
                         </a>
                     </li>
