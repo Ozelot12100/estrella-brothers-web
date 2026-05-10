@@ -35,7 +35,7 @@ const featuredProjects = allProjects
 		<div class="absolute inset-0 z-0">
 			<img
 				src="https://images.unsplash.com/photo-1541888086925-920a0bfaadc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-				alt="Fondo de construcción"
+				alt="Construction background"
 				class="w-full h-full object-cover"
 			/>
 			<div
@@ -59,14 +59,14 @@ const featuredProjects = allProjects
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center">
 					<Button
-						href={lang === "es" ? "/contacto" : "/en/contacto"}
+						href={lang === "es" ? "/es/contacto" : "/contacto"}
 						variant="primary"
 						size="lg"
 					>
 						{t("hero.cta")}
 					</Button>
 					<Button
-						href={lang === "es" ? "/proyectos" : "/en/proyectos"}
+						href={lang === "es" ? "/es/proyectos" : "/proyectos"}
 						variant="outline"
 						size="lg"
 						class="border-white text-white hover:bg-white hover:text-gray-900"
@@ -198,9 +198,7 @@ const featuredProjects = allProjects
 
 					<div class="text-center reveal-on-scroll reveal-fade-up delay-400">
 						<Button
-							href={
-								lang === "es" ? "/proyectos" : "/en/proyectos"
-							}
+							href={lang === "es" ? "/es/proyectos" : "/proyectos"}
 							variant="primary"
 							size="lg"
 						>
@@ -255,7 +253,7 @@ const featuredProjects = allProjects
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<Button
-					href={lang === "es" ? "/contacto" : "/en/contacto"}
+					href={lang === "es" ? "/es/contacto" : "/contacto"}
 					variant="secondary"
 					size="lg"
 				>

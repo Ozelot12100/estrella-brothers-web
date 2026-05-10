@@ -8,14 +8,14 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navItems = [
-    { name: t("nav.home"), href: lang === "es" ? "/" : "/en/" },
+    { name: t("nav.home"), href: lang === "es" ? "/es/" : "/" },
     {
         name: t("nav.projects"),
-        href: lang === "es" ? "/proyectos" : "/en/proyectos",
+        href: lang === "es" ? "/es/proyectos" : "/proyectos",
     },
     {
         name: t("nav.contact"),
-        href: lang === "es" ? "/contacto" : "/en/contacto",
+        href: lang === "es" ? "/es/contacto" : "/contacto",
     },
 ];
 ---
@@ -27,7 +27,7 @@ const navItems = [
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <a
-                href={lang === "es" ? "/" : "/en/"}
+                href={lang === "es" ? "/es/" : "/"}
                 class="text-2xl font-bold text-gray-900 dark:text-gray-100"
             >
                 {siteConfig.name}

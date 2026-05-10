@@ -16,17 +16,22 @@ const currentYear = new Date().getFullYear();
                     {siteConfig.name}
                 </h3>
                 <p class="text-sm mb-4">
-                    Servicios profesionales de carpintería y remodelaciones en
-                    el área de Phoenix, Arizona.
+                    {lang === "es"
+                        ? "Servicios profesionales de carpintería y remodelaciones en el área de Phoenix, Arizona."
+                        : "Professional carpentry and remodeling services in the Phoenix, Arizona area."}
                 </p>
                 <p class="text-sm">
-                    Calidad, puntualidad y profesionalismo garantizado.
+                    {lang === "es"
+                        ? "Calidad, puntualidad y profesionalismo garantizado."
+                        : "Quality, punctuality and professionalism guaranteed."}
                 </p>
             </div>
 
             <!-- Service Areas -->
             <div>
-                <h4 class="text-white font-semibold mb-4">Áreas de Servicio</h4>
+                <h4 class="text-white font-semibold mb-4">
+                    {lang === "es" ? "Áreas de Servicio" : "Service Areas"}
+                </h4>
                 <ul class="space-y-2 text-sm">
                     {
                         siteConfig.business.areaServed.map((area) => (
@@ -38,7 +43,9 @@ const currentYear = new Date().getFullYear();
 
             <!-- Contact & Socials -->
             <div>
-                <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                <h4 class="text-white font-semibold mb-4">
+                    {lang === "es" ? "Contacto" : "Contact"}
+                </h4>
                 <ul class="space-y-3 text-sm mb-6">
                     <li>
                         <a
@@ -82,7 +89,9 @@ const currentYear = new Date().getFullYear();
                     </li>
                 </ul>
 
-                <h4 class="text-white font-semibold mb-4">Síguenos</h4>
+                <h4 class="text-white font-semibold mb-4">
+                    {lang === "es" ? "Síguenos" : "Follow Us"}
+                </h4>
                 <div class="flex gap-4">
                     <a
                         href="#"
@@ -120,7 +129,7 @@ const currentYear = new Date().getFullYear();
         <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p class="mb-4 md:mb-0">
                 © {currentYear}
-                {siteConfig.name}. Todos los derechos reservados.
+                {siteConfig.name}. {lang === "es" ? "Todos los derechos reservados." : "All rights reserved."}
             </p>
             <p class="flex items-center gap-1 group">
                 {t('footer.developer')}

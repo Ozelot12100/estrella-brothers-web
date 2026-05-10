@@ -1,12 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/ui/Button.astro";
-
 ---
 
 <Layout
-    title="Página no encontrada - 404"
-    description="Lo sentimos, no pudimos encontrar la página que buscas. Vuelve al inicio o contáctanos."
+    title="Page Not Found - 404"
+    description="Sorry, we couldn't find the page you're looking for. Return home or contact us."
     noindex={true}
 >
     <div
@@ -21,14 +20,19 @@ import Button from "../components/ui/Button.astro";
             <h2
                 class="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-4xl"
             >
-                Página no encontrada
+                Page Not Found
             </h2>
-            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-                Lo sentimos, la página que estás buscando no existe, ha sido movida o está temporalmente fuera de servicio.
+            <p
+                class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-md mx-auto"
+            >
+                Sorry, the page you're looking for doesn't exist, has been
+                moved, or is temporarily unavailable.
             </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <div
+            class="flex flex-col sm:flex-row gap-4 items-center justify-center"
+        >
             <Button href="/" variant="primary" class="gap-2">
                 <svg
                     class="w-5 h-5"
@@ -43,9 +47,9 @@ import Button from "../components/ui/Button.astro";
                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                     ></path>
                 </svg>
-                Volver al inicio
+                Back to Home
             </Button>
-            <Button href="/contacto" variant="outline"> Contáctanos </Button>
+            <Button href="/contacto" variant="outline">Contact Us</Button>
         </div>
     </div>
 </Layout>

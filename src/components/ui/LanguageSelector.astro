@@ -5,12 +5,12 @@ import { languages } from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 
 const currentPath = Astro.url.pathname;
-// Remove current language prefix if exists to get pure path
-// Since 'es' is default and doesn't have prefix, we handle 'en'
+// Remove current language prefix to get the base path
+// English is default (no prefix), Spanish has /es/ prefix
 let pathWithoutLang = currentPath;
-if (currentPath.startsWith("/en/")) {
-    pathWithoutLang = currentPath.replace("/en/", "/");
-} else if (currentPath === "/en") {
+if (currentPath.startsWith("/es/")) {
+    pathWithoutLang = currentPath.replace("/es/", "/");
+} else if (currentPath === "/es") {
     pathWithoutLang = "/";
 }
 ---
@@ -55,9 +55,9 @@ if (currentPath.startsWith("/en/")) {
                     <li>
                         <a
                             href={
-                                code === "es"
+                                code === "en"
                                     ? pathWithoutLang
-                                    : `/${code}${pathWithoutLang}`
+                                    : `/es${pathWithoutLang}`
                             }
                             class={`block px-4 py-2 text-sm ${lang === code ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-700/50 font-bold" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"}`}
                         >
