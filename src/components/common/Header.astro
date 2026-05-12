@@ -28,9 +28,15 @@ const navItems = [
             <!-- Logo -->
             <a
                 href={lang === "es" ? "/es/" : "/"}
-                class="text-2xl font-bold text-gray-900 dark:text-gray-100"
+                class="flex items-center"
+                aria-label="Estrella Brothers - Home"
             >
-                {siteConfig.name}
+                <img
+                    src="/logo.png"
+                    alt="Estrella Brothers - Carpentry & Framing"
+                    class="h-12 w-auto object-contain"
+                    loading="eager"
+                />
             </a>
 
             <!-- Desktop Navigation -->
@@ -61,7 +67,7 @@ const navItems = [
                     href={`tel:${siteConfig.author.phone}`}
                     class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
                 >
-                    Llamar
+                    {lang === "es" ? "Llamar" : "Call Now"}
                 </a>
             </div>
 
@@ -121,7 +127,7 @@ const navItems = [
                         href={`tel:${siteConfig.author.phone}`}
                         class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center"
                     >
-                        Llamar Ahora
+                        {lang === "es" ? "Llamar Ahora" : "Call Now"}
                     </a>
                 </li>
             </ul>
