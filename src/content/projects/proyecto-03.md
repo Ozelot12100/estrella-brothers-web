@@ -1,18 +1,25 @@
 ---
-title: "Estructura de Deck Exterior"
-date: 2026-02-08
-category: "Deck"
+title: "Patio & Gazebo Build"
+date: 2026-01-10
+category: "Patio"
 location: "Mesa, AZ"
-description: "Construcción de base y estructura para deck exterior durable."
-coverImage: ../../assets/projects/IMG-20260212-WA0065 (Large).jpg
+description: "Design and construction of a covered patio with custom gazebo structure, providing year-round outdoor living space."
+coverImage: ../../assets/projects/patios-01.webp
 featured: true
-tags: ["Exterior", "Madera Tratada"]
+tags: ["Patio", "Gazebo", "Outdoor Living"]
 ---
 
-## Resultado
+## Project Overview
 
-Estructura sólida lista para el acabado final. Se utilizaron materiales resistentes a la intemperie y al sol de Arizona.
+We built a covered outdoor living space complete with a custom gazebo for a family in Mesa. The structure was designed to provide shade during Arizona summers while remaining structurally sound through monsoon season.
 
-### Características
-- Cimientos de concreto reforzado
-- Protección contra termitas
+### What We Did
+- Poured new concrete slab for patio extension
+- Built post-and-beam gazebo frame
+- Installed decorative rafter tails and fascia
+- Applied weatherproof finish to all exposed wood
+
+### Materials
+- 4x4 and 6x6 cedar posts
+- Douglas Fir rafters
+- Composite decking boards

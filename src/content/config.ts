@@ -5,7 +5,7 @@ const projectsCollection = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         date: z.date(),
-        category: z.enum(['Framing', 'Remodelación', 'Deck', 'Custom', 'Acabados']),
+        category: z.enum(['Framing', 'Deck', 'Carpentry', 'Patio', 'Roofing', 'Interior', 'Addition', 'Repair']),
         location: z.string(),
         description: z.string(),
         coverImage: image(),

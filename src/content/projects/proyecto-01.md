@@ -1,18 +1,25 @@
 ---
-title: "Framing en Scottsdale"
+title: "Custom Deck Construction"
 date: 2026-02-12
-category: "Framing"
+category: "Deck"
 location: "Scottsdale, AZ"
-description: "Trabajo completo de estructura y framing para ampliación residencial."
-coverImage: ../../assets/projects/IMG-20260212-WA0047 (Large).jpg
+description: "Full deck structure built from the ground up using pressure-treated lumber, concrete footings, and weather-resistant hardware."
+coverImage: ../../assets/projects/decks-01.webp
 featured: true
-tags: ["Residencial", "Framing"]
+tags: ["Exterior", "Deck", "Pressure-Treated Wood"]
 ---
 
-## Descripción
+## Project Overview
 
-Se realizó el framing completo para una nueva adición. El proceso incluyó la instalación de vigas principales y soporte estructural siguiendo estrictamente los códigos de construcción de Scottsdale.
+We designed and built a custom outdoor deck from scratch for a residential home in Scottsdale. The structure was engineered to withstand Arizona's extreme heat and monsoon seasons.
 
-### Detalles
-- Madera de alta calidad
-- Inspección aprobada en el primer intento
+### What We Did
+- Poured concrete footings anchored to frost depth
+- Installed 6x6 pressure-treated posts and beam framework
+- Used joist hangers and Simpson Strong-Tie hardware throughout
+- Final structure passed city inspection on first submission
+
+### Materials
+- Pressure-treated Douglas Fir framing
+- Hot-dipped galvanized hardware
+- Concrete Sonotube footings
