@@ -1,9 +1,11 @@
 ---
 title: "Structural Framing"
+titleEs: "Framing Estructural"
 date: 2026-01-20
 category: "Framing"
 location: "Phoenix, AZ"
 description: "Complete wood framing for a residential addition, including wall framing, headers, and roof structure meeting all local building codes."
+descriptionEs: "Framing completo de madera para una adición residencial, incluyendo paredes, vigas y estructura de techo conforme a los códigos locales."
 coverImage: ../../assets/projects/framing-01.webp
 featured: true
 tags: ["Framing", "Structural", "Residential"]

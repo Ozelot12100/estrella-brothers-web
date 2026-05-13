@@ -21,7 +21,10 @@ interface Props {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
-const { title, category, location, description, date, coverImage, beforeImage, afterImage, tags } = project.data;
+const { title, titleEs, category, location, description, descriptionEs, date, coverImage, beforeImage, afterImage, tags } = project.data;
+
+const displayTitle = titleEs ?? title;
+const displayDescription = descriptionEs ?? description;
 
 const formattedDate = new Intl.DateTimeFormat("es-MX", {
     year: "numeric",
@@ -30,7 +33,7 @@ const formattedDate = new Intl.DateTimeFormat("es-MX", {
 }).format(date);
 ---
 
-<Layout title={title} description={description} type="article" article={true}>
+<Layout title={displayTitle} description={displayDescription} type="article" article={true}>
     <article class="container mx-auto px-4 py-16 max-w-4xl">
         <nav class="mb-8 text-sm">
             <ol class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
@@ -38,7 +41,7 @@ const formattedDate = new Intl.DateTimeFormat("es-MX", {
                 <li>/</li>
                 <li><a href="/es/proyectos" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Proyectos</a></li>
                 <li>/</li>
-                <li class="text-gray-900 dark:text-gray-100 font-semibold">{title}</li>
+                <li class="text-gray-900 dark:text-gray-100 font-semibold">{displayTitle}</li>
             </ol>
         </nav>
 
@@ -47,7 +50,7 @@ const formattedDate = new Intl.DateTimeFormat("es-MX", {
                 <span class="bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full">{category}</span>
                 {tags && tags.map((tag: string) => (<span class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">{tag}</span>))}
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">{title}</h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">{displayTitle}</h1>
             <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
                 <div class="flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -67,7 +70,7 @@ const formattedDate = new Intl.DateTimeFormat("es-MX", {
         )}
 
         <div class="prose prose-lg max-w-none mb-12">
-            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{description}</p>
+            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{displayDescription}</p>
         </div>
         <div class="prose prose-lg max-w-none mb-12"><Content /></div>
 

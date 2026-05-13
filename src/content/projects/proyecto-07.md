@@ -1,9 +1,11 @@
 ---
 title: "Roofing Structure"
+titleEs: "Estructura de Techo"
 date: 2025-09-12
 category: "Roofing"
 location: "Peoria, AZ"
 description: "Complete roof framing including rafters, ridge board, and sheathing for a new detached garage and workshop structure."
+descriptionEs: "Framing completo de techo con vigas, cumbrera y tablero para una nueva estructura de garage y taller."
 coverImage: ../../assets/projects/roofs-01.webp
 featured: false
 tags: ["Roofing", "Framing", "Garage"]

@@ -4,10 +4,12 @@ const projectsCollection = defineCollection({
     type: 'content',
     schema: ({ image }) => z.object({
         title: z.string(),
+        titleEs: z.string().optional(),
         date: z.date(),
         category: z.enum(['Framing', 'Deck', 'Carpentry', 'Patio', 'Roofing', 'Interior', 'Addition', 'Repair']),
         location: z.string(),
         description: z.string(),
+        descriptionEs: z.string().optional(),
         coverImage: image(),
         beforeImage: image().optional(),
         afterImage: image().optional(),

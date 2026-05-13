@@ -1,9 +1,11 @@
 ---
 title: "Patio & Gazebo Build"
+titleEs: "Construcción de Patio y Gazebo"
 date: 2026-01-10
 category: "Patio"
 location: "Mesa, AZ"
 description: "Design and construction of a covered patio with custom gazebo structure, providing year-round outdoor living space."
+descriptionEs: "Diseño y construcción de patio cubierto con gazebo personalizado para disfrutar al aire libre durante todo el año."
 coverImage: ../../assets/projects/patios-01.webp
 featured: true
 tags: ["Patio", "Gazebo", "Outdoor Living"]

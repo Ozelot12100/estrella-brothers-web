@@ -1,9 +1,11 @@
 ---
 title: "Custom Carpentry & Woodwork"
+titleEs: "Carpintería y Trabajo en Madera"
 date: 2025-12-15
 category: "Carpentry"
 location: "Tempe, AZ"
 description: "Custom interior carpentry including built-in shelving, trim work, and finish carpentry throughout a full home renovation."
+descriptionEs: "Carpintería interior personalizada con repisas empotradas, molduras y acabados en madera en una renovación completa del hogar."
 coverImage: ../../assets/projects/carpentry-01.webp
 featured: true
 tags: ["Carpentry", "Interior", "Custom Work"]

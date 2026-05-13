@@ -1,9 +1,11 @@
 ---
 title: "Interior Wall Framing"
+titleEs: "División de Interiores"
 date: 2025-10-05
 category: "Interior"
 location: "Chandler, AZ"
 description: "Interior partition wall framing for a commercial office space conversion, creating private offices and conference rooms from an open floor plan."
+descriptionEs: "Framing de paredes interiores para convertir un espacio comercial abierto en oficinas privadas y salas de juntas."
 coverImage: ../../assets/projects/interior-01.webp
 featured: false
 tags: ["Interior", "Framing", "Commercial"]

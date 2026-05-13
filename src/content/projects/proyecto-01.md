@@ -1,9 +1,11 @@
 ---
 title: "Custom Deck Construction"
+titleEs: "Construcción de Deck Personalizado"
 date: 2026-02-12
 category: "Deck"
 location: "Scottsdale, AZ"
 description: "Full deck structure built from the ground up using pressure-treated lumber, concrete footings, and weather-resistant hardware."
+descriptionEs: "Estructura de deck construida desde cero con madera tratada, cimientos de concreto y herrajes resistentes a la intemperie."
 coverImage: ../../assets/projects/decks-01.webp
 featured: true
 tags: ["Exterior", "Deck", "Pressure-Treated Wood"]

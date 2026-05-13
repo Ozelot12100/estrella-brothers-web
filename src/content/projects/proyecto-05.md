@@ -1,9 +1,11 @@
 ---
 title: "Home Addition"
+titleEs: "Adición al Hogar"
 date: 2025-11-20
 category: "Addition"
 location: "Gilbert, AZ"
 description: "Full room addition including foundation, framing, roofing tie-in, and interior finish to seamlessly expand the existing home."
+descriptionEs: "Adición completa de habitación con cimientos, framing, techado y acabados interiores para ampliar el hogar existente."
 coverImage: ../../assets/projects/additions-01.webp
 featured: false
 tags: ["Addition", "Framing", "Roofing"]

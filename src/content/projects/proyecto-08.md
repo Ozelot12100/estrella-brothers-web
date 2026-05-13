@@ -1,9 +1,11 @@
 ---
 title: "Wood Rot Repair"
+titleEs: "Reparación de Madera Podrida"
 date: 2025-08-18
 category: "Repair"
 location: "Scottsdale, AZ"
 description: "Full wood rot assessment and replacement on a residential home, including damaged fascia, soffits, and structural framing members."
+descriptionEs: "Diagnóstico y reemplazo completo de madera dañada por pudrición en un hogar residencial, incluyendo fascia, sofítos y vigas estructurales."
 coverImage: ../../assets/projects/woodrot-01.webp
 featured: false
 tags: ["Repair", "Rot Repair", "Exterior"]
