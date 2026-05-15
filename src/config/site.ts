@@ -14,6 +14,6 @@ export const siteConfig: SiteConfig = {
     business: {
         location: 'Phoenix, Arizona',
         areaServed: ['Phoenix', 'Scottsdale', 'Mesa', 'Tempe', 'Chandler', 'Gilbert'],
-        serviceTypes: ['Framing', 'Remodelación', 'Deck Building', 'Custom Carpentry', 'Acabados'],
+        serviceTypes: ['Framing', 'Remodelación', 'Deck Building', 'Custom Carpentry', 'Acabados', 'Wood Rot Repair'],
     },
 };

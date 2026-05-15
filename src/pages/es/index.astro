@@ -11,6 +11,13 @@ import Button from "@/components/ui/Button.astro";
 import { siteConfig } from "@/config/site";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
+import framingImg from "@/assets/projects/framing-01.webp";
+import interiorImg from "@/assets/projects/interior-01.webp";
+import decksImg from "@/assets/projects/decks-01.webp";
+import carpentryImg from "@/assets/projects/carpentry-01.webp";
+import baseboardsImg from "@/assets/projects/baseboards-01.webp";
+import woodrotImg from "@/assets/projects/woodrot-01.webp";
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -136,40 +143,41 @@ const featuredProjects = allProjects
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{
 					siteConfig.business.serviceTypes.map((service, index) => {
-						const icons = [
-							"M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-							"M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
-							"M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-							"M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5",
-							"M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+						const images = [
+							framingImg,
+							interiorImg,
+							decksImg,
+							carpentryImg,
+							baseboardsImg,
+							woodrotImg,
 						];
 						return (
 							<div
-								class={`bg-white dark:bg-slate-800 rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll reveal-fade-up delay-${((index % 3) + 1) * 100}`}
+								class={`bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group reveal-on-scroll reveal-fade-up delay-${((index % 3) + 1) * 100}`}
 							>
-								<div class="bg-blue-600 dark:bg-blue-500 text-white w-14 h-14 rounded-lg flex items-center justify-center mb-4 shadow-md">
-									<svg
-										class="w-7 h-7"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d={icons[index % icons.length]}
-										/>
-									</svg>
+								<div class="h-56 overflow-hidden relative">
+									<img
+										src={images[index % images.length].src}
+										alt={t(`service.${service}` as any) || service}
+										class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+										loading="lazy"
+									/>
+									<div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+										<a href={lang === "es" ? "/es/contacto" : "/contacto"} class="text-white font-semibold bg-blue-600/90 hover:bg-blue-600 px-6 py-2 rounded-lg backdrop-blur-sm transition-colors w-full text-center">
+											{lang === "es" ? "Solicitar Presupuesto" : "Request Estimate"}
+										</a>
+									</div>
 								</div>
-								<h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-									{t(`service.${service}` as any) || service}
-								</h3>
-								<p class="text-gray-600 dark:text-gray-400">
-									{t("services.descPrefix")}
-									{(t(`service.${service}` as any) || service).toLowerCase()}
-									{t("services.descSuffix")}
-								</p>
+								<div class="p-8 border-t border-gray-100 dark:border-gray-700">
+									<h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+										{t(`service.${service}` as any) || service}
+									</h3>
+									<p class="text-gray-600 dark:text-gray-400">
+										{t("services.descPrefix")}
+										{(t(`service.${service}` as any) || service).toLowerCase()}
+										{t("services.descSuffix")}
+									</p>
+								</div>
 							</div>
 						);
 					})

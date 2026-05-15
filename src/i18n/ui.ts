@@ -47,6 +47,7 @@ export const ui = {
         'service.Deck Building': 'Construcción de Decks',
         'service.Custom Carpentry': 'Carpintería Personalizada',
         'service.Acabados': 'Acabados Finos',
+        'service.Wood Rot Repair': 'Reparación de Madera Podrida',
         'footer.developer': 'Desarrollado por',
     },
     en: {
@@ -90,6 +91,7 @@ export const ui = {
         'service.Deck Building': 'Deck Building',
         'service.Custom Carpentry': 'Custom Carpentry',
         'service.Acabados': 'Fine Finishes',
+        'service.Wood Rot Repair': 'Wood Rot Repair',
         'footer.developer': 'Developed by',
     },
 } as const;
