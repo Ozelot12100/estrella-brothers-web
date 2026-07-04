@@ -10,8 +10,8 @@ export type RouteKey = 'home' | 'projects' | 'contact';
  */
 export const routes: Record<RouteKey, Record<Lang, string>> = {
     home: { en: '/', es: '/es/' },
-    projects: { en: '/proyectos', es: '/es/proyectos' },
-    contact: { en: '/contacto', es: '/es/contacto' },
+    projects: { en: '/projects', es: '/es/proyectos' },
+    contact: { en: '/contact', es: '/es/contacto' },
 };
 
 /** URL de una sección en el idioma dado, con sub-path opcional (p.ej. slug de proyecto). */
@@ -31,13 +31,22 @@ const stripTrailingSlash = (p: string) =>
 export function translatePath(pathname: string, targetLang: Lang): string {
     const current = stripTrailingSlash(pathname);
 
+    // Primero coincidencias exactas de sección
     for (const key of Object.keys(routes) as RouteKey[]) {
         for (const lang of Object.keys(routes[key]) as Lang[]) {
-            const base = stripTrailingSlash(routes[key][lang]);
-            if (current === base || (base === '' && current === '/')) {
+            if (current === stripTrailingSlash(routes[key][lang])) {
                 return routes[key][targetLang];
             }
-            if (base !== '' && base !== '/' && current.startsWith(`${base}/`)) {
+        }
+    }
+
+    // Luego coincidencias por prefijo (sub-paths como el slug de proyecto).
+    // 'home' se excluye: su variante ES ('/es/') se tragaría cualquier ruta /es/*.
+    for (const key of Object.keys(routes) as RouteKey[]) {
+        if (key === 'home') continue;
+        for (const lang of Object.keys(routes[key]) as Lang[]) {
+            const base = stripTrailingSlash(routes[key][lang]);
+            if (current.startsWith(`${base}/`)) {
                 return localizePath(key, targetLang, current.slice(base.length + 1));
             }
         }

@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { localizePath } from "../../i18n/routes";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -125,7 +126,7 @@ const t = useTranslations(lang);
                 </div>
 
                 <a
-                    href={lang === "es" ? "/es/contacto" : "/contacto"}
+                    href={localizePath("contact", lang)}
                     class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
                 >
                     {t("about.cta")}

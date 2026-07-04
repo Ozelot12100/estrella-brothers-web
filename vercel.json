@@ -2,5 +2,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": "astro"
+  "framework": "astro",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/proyectos", "destination": "/projects/", "permanent": true },
+    { "source": "/proyectos/", "destination": "/projects/", "permanent": true },
+    { "source": "/proyectos/:slug", "destination": "/projects/:slug/", "permanent": true },
+    { "source": "/proyectos/:slug/", "destination": "/projects/:slug/", "permanent": true },
+    { "source": "/contacto", "destination": "/contact/", "permanent": true },
+    { "source": "/contacto/", "destination": "/contact/", "permanent": true }
+  ]
 }
