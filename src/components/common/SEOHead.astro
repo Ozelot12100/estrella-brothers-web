@@ -1,10 +1,14 @@
 ---
 import type { SEOProps } from "../../types";
 import { siteConfig } from "../../config/site";
-import { useTranslations } from "../../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { translatePath, type Lang } from "../../i18n/routes";
 
 // El schema.org se emite con los nombres de servicio en inglés
 const tEn = useTranslations("en");
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props extends SEOProps {}
 
@@ -17,10 +21,23 @@ const {
     type = "website",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// URLs absolutas siempre con slash final, consistentes con el formato de build (directory)
+const withTrailingSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
+
+const canonicalURL = new URL(withTrailingSlash(Astro.url.pathname), Astro.site);
+const alternateUrl = (targetLang: Lang) =>
+    new URL(
+        withTrailingSlash(translatePath(Astro.url.pathname, targetLang)),
+        Astro.site,
+    );
+
 const fullTitle =
-    title === siteConfig.title ? title : `${title} | ${siteConfig.name}`;
+    title === t("home.seoTitle") ? title : `${title} | ${siteConfig.name}`;
 const ogImage = new URL(image, Astro.site);
+
+// OpenGraph usa guión bajo en el locale (en_US), no guión
+const ogLocale = lang === "es" ? "es_US" : "en_US";
+const ogLocaleAlternate = lang === "es" ? "en_US" : "es_US";
 ---
 
 <!-- Primary Meta Tags -->
@@ -32,6 +49,21 @@ const ogImage = new URL(image, Astro.site);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Idiomas alternos (hreflang) -->
+{
+    !noindex && (
+        <>
+            <link rel="alternate" hreflang="en" href={alternateUrl("en")} />
+            <link rel="alternate" hreflang="es" href={alternateUrl("es")} />
+            <link
+                rel="alternate"
+                hreflang="x-default"
+                href={alternateUrl("en")}
+            />
+        </>
+    )
+}
+
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
@@ -42,7 +74,8 @@ const ogImage = new URL(image, Astro.site);
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlternate} />
 <meta property="og:site_name" content={siteConfig.name} />
 
 <!-- Twitter -->
@@ -64,7 +97,8 @@ const ogImage = new URL(image, Astro.site);
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         name: siteConfig.name,
-        description: siteConfig.description,
+        description: t("home.seoDescription"),
+        inLanguage: lang,
         url: siteConfig.url,
         telephone: siteConfig.author.phone.e164,
         email: siteConfig.author.email,

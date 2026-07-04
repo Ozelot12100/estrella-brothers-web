@@ -7,12 +7,10 @@ export type ServiceKey =
     | 'finishes'
     | 'woodrot';
 
+// Título/descripción SEO viven por idioma en src/i18n/ui.ts (home.seoTitle, home.seoDescription)
 export interface SiteConfig {
     name: string;
-    title: string;
-    description: string;
     url: string;
-    locale: string;
     author: {
         name: string;
         phone: {

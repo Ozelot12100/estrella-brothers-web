@@ -2,10 +2,7 @@ import type { SiteConfig } from '../types';
 
 export const siteConfig: SiteConfig = {
     name: 'Estrella Brothers',
-    title: 'Estrella Brothers - Carpintería y Framing en Phoenix, AZ',
-    description: 'Servicios profesionales de carpintería, framing y remodelaciones en Phoenix, Scottsdale, Mesa y Tempe, Arizona. Calidad garantizada.',
     url: 'https://estrellabrotherscarpentry.com',
-    locale: 'es-US',
     author: {
         name: 'Luis Estrella',
         phone: {
