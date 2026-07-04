@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { siteConfig } from "../../config/site";
+import logoImg from "@/assets/logo/logo-transparente.png";
 import ThemeToggle from "../ui/ThemeToggle.astro";
 import LanguageSelector from "../ui/LanguageSelector.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
@@ -26,10 +28,12 @@ const navItems = [
                 class="flex items-center"
                 aria-label="Estrella Brothers - Home"
             >
-                <img
-                    src={(await import("@/assets/logo/logo-transparente.png")).default.src}
+                <Image
+                    src={logoImg}
                     alt="Estrella Brothers - Carpentry & Framing"
                     class="h-14 md:h-16 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+                    height={64}
+                    densities={[1, 2]}
                     loading="eager"
                 />
             </a>
