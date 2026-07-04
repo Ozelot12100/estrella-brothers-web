@@ -62,7 +62,7 @@ const navItems = [
                     href={`tel:${siteConfig.author.phone.e164}`}
                     class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
                 >
-                    {lang === "es" ? "Llamar" : "Call Now"}
+                    {t("nav.call")}
                 </a>
             </div>
 
@@ -99,7 +99,7 @@ const navItems = [
             >
                 <span
                     class="text-sm font-medium text-gray-500 dark:text-gray-400"
-                    >Idioma:</span
+                    >{t("header.language")}</span
                 >
                 <LanguageSelector />
             </div>
@@ -124,7 +124,7 @@ const navItems = [
                         href={`tel:${siteConfig.author.phone.e164}`}
                         class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center"
                     >
-                        {lang === "es" ? "Llamar Ahora" : "Call Now"}
+                        {t("nav.callNow")}
                     </a>
                 </li>
             </ul>

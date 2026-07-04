@@ -1,6 +1,10 @@
 ---
 import type { SEOProps } from "../../types";
 import { siteConfig } from "../../config/site";
+import { useTranslations } from "../../i18n/utils";
+
+// El schema.org se emite con los nombres de servicio en inglés
+const tEn = useTranslations("en");
 
 interface Props extends SEOProps {}
 
@@ -79,7 +83,9 @@ const ogImage = new URL(image, Astro.site);
             "@type": "City",
             name: area,
         })),
-        serviceType: siteConfig.business.serviceTypes,
+        serviceType: siteConfig.business.serviceTypes.map((s) =>
+            tEn(`service.${s}`),
+        ),
         priceRange: "$$",
     })}
 />

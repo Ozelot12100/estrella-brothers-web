@@ -1,3 +1,12 @@
+/** Claves neutrales de servicio; las etiquetas por idioma viven en src/i18n/ui.ts (service.*) */
+export type ServiceKey =
+    | 'framing'
+    | 'remodeling'
+    | 'decks'
+    | 'carpentry'
+    | 'finishes'
+    | 'woodrot';
+
 export interface SiteConfig {
     name: string;
     title: string;
@@ -17,7 +26,7 @@ export interface SiteConfig {
     business: {
         location: string;
         areaServed: string[];
-        serviceTypes: string[];
+        serviceTypes: ServiceKey[];
     };
 }
 

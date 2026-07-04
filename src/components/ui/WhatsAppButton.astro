@@ -1,13 +1,11 @@
 ---
-import { getLangFromUrl } from "../../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { waLink } from "../../utils/contact";
 
 const lang = getLangFromUrl(Astro.url);
-const whatsappMessage = lang === "es"
-    ? "Hola, me gustaría solicitar un presupuesto para mi proyecto de carpintería/remodelación."
-    : "Hello, I would like to request a quote for my carpentry/remodeling project.";
-const tooltipText = lang === "es" ? "¿Te ayudamos?" : "Need help?";
-const whatsappUrl = waLink(whatsappMessage);
+const t = useTranslations(lang);
+const tooltipText = t("whatsapp.tooltip");
+const whatsappUrl = waLink(t("whatsapp.message"));
 ---
 
 <a
