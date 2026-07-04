@@ -3,20 +3,15 @@ import { siteConfig } from "../../config/site";
 import ThemeToggle from "../ui/ThemeToggle.astro";
 import LanguageSelector from "../ui/LanguageSelector.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { localizePath } from "../../i18n/routes";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const navItems = [
-    { name: t("nav.home"), href: lang === "es" ? "/es/" : "/" },
-    {
-        name: t("nav.projects"),
-        href: lang === "es" ? "/es/proyectos" : "/proyectos",
-    },
-    {
-        name: t("nav.contact"),
-        href: lang === "es" ? "/es/contacto" : "/contacto",
-    },
+    { name: t("nav.home"), href: localizePath("home", lang) },
+    { name: t("nav.projects"), href: localizePath("projects", lang) },
+    { name: t("nav.contact"), href: localizePath("contact", lang) },
 ];
 ---
 
@@ -27,7 +22,7 @@ const navItems = [
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <a
-                href={lang === "es" ? "/es/" : "/"}
+                href={localizePath("home", lang)}
                 class="flex items-center"
                 aria-label="Estrella Brothers - Home"
             >
@@ -78,6 +73,8 @@ const navItems = [
                     id="mobile-menu-button"
                     class="p-2 text-gray-700 dark:text-gray-300"
                     aria-label="Toggle menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
                 >
                     <svg
                         class="w-6 h-6"
@@ -140,6 +137,7 @@ const navItems = [
     const menu = document.getElementById("mobile-menu");
 
     button?.addEventListener("click", () => {
-        menu?.classList.toggle("hidden");
+        const nowHidden = menu?.classList.toggle("hidden");
+        button.setAttribute("aria-expanded", String(!nowHidden));
     });
 </script>

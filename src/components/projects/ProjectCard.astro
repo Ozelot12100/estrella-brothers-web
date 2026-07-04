@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { localizePath } from "../../i18n/routes";
 
 interface Props {
     project: CollectionEntry<"projects">;
@@ -21,7 +22,7 @@ const {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const basePath = lang === "es" ? "/es/proyectos" : "/proyectos";
+const projectUrl = localizePath("projects", lang, project.slug);
 
 const displayTitle = lang === "es" ? (titleEs ?? title) : title;
 const displayDescription =
@@ -40,7 +41,7 @@ const formattedDate = new Intl.DateTimeFormat(
 <article
     class="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
 >
-    <a href={`${basePath}/${project.slug}`} class="block">
+    <a href={projectUrl} class="block">
         <!-- Image Container -->
         <div class="relative aspect-[4/3] overflow-hidden bg-gray-200">
             <Image
