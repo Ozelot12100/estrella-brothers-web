@@ -1,14 +1,13 @@
 ---
-import { siteConfig } from "../../config/site";
 import { getLangFromUrl } from "../../i18n/utils";
+import { waLink } from "../../utils/contact";
 
 const lang = getLangFromUrl(Astro.url);
-const whatsappNumber = siteConfig.author.phone.replace(/[\s\-\(\)\+]/g, "");
 const whatsappMessage = lang === "es"
     ? "Hola, me gustaría solicitar un presupuesto para mi proyecto de carpintería/remodelación."
     : "Hello, I would like to request a quote for my carpentry/remodeling project.";
 const tooltipText = lang === "es" ? "¿Te ayudamos?" : "Need help?";
-const whatsappUrl = `https://wa.me/1${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+const whatsappUrl = waLink(whatsappMessage);
 ---
 
 <a

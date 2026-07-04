@@ -5,6 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 import mcp from 'astro-mcp';
 
+// astro-mcp es una herramienta de desarrollo; no debe integrarse en builds de producción
+const isDev = process.argv.includes('dev');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://estrellabrotherscarpentry.com',
@@ -19,7 +22,7 @@ export default defineConfig({
   },
 
   // Integrations
-  integrations: [sitemap(), mcp()],
+  integrations: [sitemap(), ...(isDev ? [mcp()] : [])],
 
   // Image optimization
   image: {

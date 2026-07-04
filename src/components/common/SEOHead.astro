@@ -62,7 +62,7 @@ const ogImage = new URL(image, Astro.site);
         name: siteConfig.name,
         description: siteConfig.description,
         url: siteConfig.url,
-        telephone: siteConfig.author.phone,
+        telephone: siteConfig.author.phone.e164,
         email: siteConfig.author.email,
         address: {
             "@type": "PostalAddress",

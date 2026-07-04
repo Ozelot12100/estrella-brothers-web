@@ -6,6 +6,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import BeforeAfterSlider from "@/components/projects/BeforeAfterSlider.astro";
 import Button from "@/components/ui/Button.astro";
+import { siteConfig } from "@/config/site";
 
 export const getStaticPaths = (async () => {
     const projects = await getCollection("projects");
@@ -142,12 +143,12 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
         }
 
         <!-- Project Description -->
-        <div class="prose prose-lg max-w-none mb-12">
+        <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
             <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{description}</p>
         </div>
 
         <!-- Project Content (from markdown) -->
-        <div class="prose prose-lg max-w-none mb-12">
+        <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
             <Content />
         </div>
 
@@ -164,7 +165,7 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
                     Request Estimate
                 </Button>
                 <Button
-                    href={`tel:+14805146765`}
+                    href={`tel:${siteConfig.author.phone.e164}`}
                     variant="outline"
                     size="lg"
                     class="border-white text-white hover:bg-white hover:text-blue-600"

@@ -8,7 +8,10 @@ export const siteConfig: SiteConfig = {
     locale: 'es-US',
     author: {
         name: 'Luis Estrella',
-        phone: '+1 (480) 514-6765',
+        phone: {
+            e164: '+14805146765',
+            display: '+1 (480) 514-6765',
+        },
         email: 'Estrellitaluis123@gmail.com',
     },
     business: {

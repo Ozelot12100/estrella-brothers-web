@@ -64,7 +64,7 @@ const navItems = [
                 </div>
 
                 <a
-                    href={`tel:${siteConfig.author.phone}`}
+                    href={`tel:${siteConfig.author.phone.e164}`}
                     class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
                 >
                     {lang === "es" ? "Llamar" : "Call Now"}
@@ -124,7 +124,7 @@ const navItems = [
                     class="pt-4 mt-4 border-t border-gray-200 dark:border-slate-700"
                 >
                     <a
-                        href={`tel:${siteConfig.author.phone}`}
+                        href={`tel:${siteConfig.author.phone.e164}`}
                         class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center"
                     >
                         {lang === "es" ? "Llamar Ahora" : "Call Now"}

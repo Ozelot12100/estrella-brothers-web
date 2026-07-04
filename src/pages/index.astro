@@ -64,8 +64,8 @@ const featuredProjects = allProjects
 				<h1
 					class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
 				>
-					{t("hero.title").split(" Phoenix")[0]}
-					<span class="text-blue-400">Phoenix, AZ</span>
+					{t("hero.title")}
+					<span class="text-blue-400">{t("hero.titleHighlight")}</span>
 				</h1>
 				<p
 					class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
@@ -96,13 +96,13 @@ const featuredProjects = allProjects
 				>
 					<div>
 						<div class="text-4xl font-bold text-blue-400 mb-2">
-							10+
+							6+
 						</div>
 						<div class="text-gray-400">{t("stats.years")}</div>
 					</div>
 					<div>
 						<div class="text-4xl font-bold text-blue-400 mb-2">
-							500+
+							100+
 						</div>
 						<div class="text-gray-400">{t("stats.projects")}</div>
 					</div>
@@ -276,7 +276,7 @@ const featuredProjects = allProjects
 					{t("cta.button")}
 				</Button>
 				<Button
-					href={`tel:${siteConfig.author.phone}`}
+					href={`tel:${siteConfig.author.phone.e164}`}
 					variant="outline"
 					size="lg"
 					class="border-white text-white hover:bg-white hover:text-blue-600"
@@ -294,7 +294,7 @@ const featuredProjects = allProjects
 							d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
 						></path>
 					</svg>
-					{siteConfig.author.phone}
+					{siteConfig.author.phone.display}
 				</Button>
 			</div>
 		</div>

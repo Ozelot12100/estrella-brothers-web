@@ -1,18 +1,3 @@
-import type { ImageMetadata } from 'astro';
-
-export interface Project {
-    title: string;
-    date: Date;
-    category: 'Framing' | 'Remodelación' | 'Deck' | 'Custom' | 'Acabados';
-    location: string;
-    description: string;
-    coverImage: ImageMetadata;
-    beforeImage?: ImageMetadata;
-    afterImage?: ImageMetadata;
-    featured?: boolean;
-    tags?: string[];
-}
-
 export interface SiteConfig {
     name: string;
     title: string;
@@ -21,7 +6,12 @@ export interface SiteConfig {
     locale: string;
     author: {
         name: string;
-        phone: string;
+        phone: {
+            /** Formato E.164, p.ej. '+14805146765' — para tel: y wa.me */
+            e164: string;
+            /** Formato legible para mostrar en la UI */
+            display: string;
+        };
         email: string;
     };
     business: {

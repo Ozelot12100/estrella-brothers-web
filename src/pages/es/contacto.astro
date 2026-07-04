@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { siteConfig } from "@/config/site";
+import { waLink } from "@/utils/contact";
 
-const whatsappNumber = siteConfig.author.phone.replace(/[\s\-\(\)\+]/g, "");
-const whatsappUrl = `https://wa.me/1${whatsappNumber}`;
+const whatsappUrl = waLink();
 
 const services = siteConfig.business.serviceTypes;
 ---
@@ -54,10 +54,9 @@ const services = siteConfig.business.serviceTypes;
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {services.map((service) => {
-                    const msg = encodeURIComponent(`Hola, me interesa un presupuesto gratuito para: ${service}`);
                     return (
                         <a
-                            href={`https://wa.me/1${whatsappNumber}?text=${msg}`}
+                            href={waLink(`Hola, me interesa un presupuesto gratuito para: ${service}`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-green-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 transition-all duration-200"
@@ -82,7 +81,7 @@ const services = siteConfig.business.serviceTypes;
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-1">Llámanos</h3>
-                    <a href={`tel:${siteConfig.author.phone}`} class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">{siteConfig.author.phone}</a>
+                    <a href={`tel:${siteConfig.author.phone.e164}`} class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">{siteConfig.author.phone.display}</a>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Lun–Sáb: 7am – 6pm</p>
                 </div>
             </div>

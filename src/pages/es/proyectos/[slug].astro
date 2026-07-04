@@ -6,6 +6,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import BeforeAfterSlider from "@/components/projects/BeforeAfterSlider.astro";
 import Button from "@/components/ui/Button.astro";
+import { siteConfig } from "@/config/site";
 
 export const getStaticPaths = (async () => {
     const projects = await getCollection("projects");
@@ -69,17 +70,17 @@ const formattedDate = new Intl.DateTimeFormat("es-MX", {
             </div>
         )}
 
-        <div class="prose prose-lg max-w-none mb-12">
+        <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
             <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{displayDescription}</p>
         </div>
-        <div class="prose prose-lg max-w-none mb-12"><Content /></div>
+        <div class="prose prose-lg dark:prose-invert max-w-none mb-12"><Content /></div>
 
         <div class="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white">
             <h2 class="text-3xl font-bold mb-4">¿Tienes un Proyecto Similar?</h2>
             <p class="text-lg mb-8 opacity-90">Obtén un presupuesto gratuito y sin compromiso para tu próximo proyecto.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button href="/es/contacto" variant="secondary" size="lg">Solicitar Presupuesto</Button>
-                <Button href="tel:+14805146765" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-blue-600">Llamar Ahora</Button>
+                <Button href={`tel:${siteConfig.author.phone.e164}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-blue-600">Llamar Ahora</Button>
             </div>
         </div>
 
