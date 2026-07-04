@@ -64,9 +64,13 @@ const ogLocaleAlternate = lang === "es" ? "en_US" : "es_US";
     )
 }
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
+<!-- Favicon e iconos (logo Estrella Brothers) -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#281c13" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
@@ -74,6 +78,9 @@ const ogLocaleAlternate = lang === "es" ? "en_US" : "es_US";
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={siteConfig.name} />
 <meta property="og:locale" content={ogLocale} />
 <meta property="og:locale:alternate" content={ogLocaleAlternate} />
 <meta property="og:site_name" content={siteConfig.name} />
