@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
@@ -16,7 +17,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 const {
     title,
     titleEs,

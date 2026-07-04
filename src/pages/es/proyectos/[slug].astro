@@ -7,7 +7,7 @@ import ProjectDetailPage from "@/components/pages/ProjectDetailPage.astro";
 export const getStaticPaths = (async () => {
     const projects = await getCollection("projects");
     return projects.map((project: CollectionEntry<"projects">) => ({
-        params: { slug: project.slug },
+        params: { slug: project.id },
         props: { project },
     }));
 }) satisfies GetStaticPaths;

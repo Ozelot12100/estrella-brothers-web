@@ -22,7 +22,7 @@ const {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const projectUrl = localizePath("projects", lang, project.slug);
+const projectUrl = localizePath("projects", lang, project.id);
 
 const displayTitle = lang === "es" ? (titleEs ?? title) : title;
 const displayDescription =
