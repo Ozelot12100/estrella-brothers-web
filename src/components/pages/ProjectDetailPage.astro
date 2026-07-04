@@ -54,14 +54,14 @@ const formattedDate = new Intl.DateTimeFormat(
 >
     <article class="container mx-auto px-4 py-16 max-w-4xl">
         <!-- Breadcrumb -->
-        <nav class="mb-8 text-sm">
+        <nav class="mb-8 text-sm" aria-label="Breadcrumb">
             <ol
                 class="flex items-center gap-2 text-gray-600 dark:text-gray-400"
             >
                 <li>
                     <a
                         href={localizePath("home", lang)}
-                        class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
                         >{t("detail.home")}</a
                     >
                 </li>
@@ -69,7 +69,7 @@ const formattedDate = new Intl.DateTimeFormat(
                 <li>
                     <a
                         href={localizePath("projects", lang)}
-                        class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
                         >{t("detail.projects")}</a
                     >
                 </li>
@@ -84,7 +84,7 @@ const formattedDate = new Intl.DateTimeFormat(
         <header class="mb-8">
             <div class="flex flex-wrap items-center gap-3 mb-4">
                 <span
-                    class="bg-blue-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full"
+                    class="bg-blue-700 text-white text-sm font-semibold px-4 py-1.5 rounded-full"
                 >
                     {t(`category.${category}`)}
                 </span>
@@ -164,7 +164,7 @@ const formattedDate = new Intl.DateTimeFormat(
 
         <!-- Call to Action -->
         <div
-            class="bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-800 dark:to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white"
+            class="bg-gradient-to-br from-blue-700 to-blue-800 dark:from-blue-800 dark:to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white"
         >
             <h2 class="text-3xl font-bold mb-4">{t("detail.ctaTitle")}</h2>
             <p class="text-lg mb-8 opacity-90">
@@ -182,7 +182,7 @@ const formattedDate = new Intl.DateTimeFormat(
                     href={`tel:${siteConfig.author.phone.e164}`}
                     variant="outline"
                     size="lg"
-                    class="border-white text-white hover:bg-white hover:text-blue-600"
+                    class="border-white text-white hover:bg-white hover:text-blue-700"
                 >
                     {t("nav.callNow")}
                 </Button>
@@ -193,7 +193,7 @@ const formattedDate = new Intl.DateTimeFormat(
         <div class="mt-12 text-center">
             <a
                 href={localizePath("projects", lang)}
-                class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
+                class="inline-flex items-center gap-2 text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors"
             >
                 <svg
                     class="w-5 h-5"

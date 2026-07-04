@@ -7,6 +7,8 @@ export const defaultLang = 'en';
 
 export const ui = {
     es: {
+        'a11y.skip': 'Saltar al contenido',
+        'a11y.mainNav': 'Navegación principal',
         'nav.home': 'Inicio',
         'nav.services': 'Servicios',
         'nav.projects': 'Proyectos',
@@ -23,6 +25,10 @@ export const ui = {
         'hero.cta': 'Solicita tu Presupuesto Gratis',
         'hero.cta2': 'Ver Nuestros Proyectos',
         'project.viewDetails': 'Ver detalles',
+        'slider.before': 'ANTES',
+        'slider.after': 'DESPUÉS',
+        'slider.beforeAlt': 'Antes',
+        'slider.afterAlt': 'Después',
         'about.badge': 'Sobre Nosotros',
         'about.title1': 'Pasión por la ',
         'about.titleHighlight': 'Carpintería',
@@ -103,6 +109,8 @@ export const ui = {
         'notfound.contact': 'Contáctanos',
     },
     en: {
+        'a11y.skip': 'Skip to content',
+        'a11y.mainNav': 'Main navigation',
         'nav.home': 'Home',
         'nav.services': 'Services',
         'nav.projects': 'Projects',
@@ -119,6 +127,10 @@ export const ui = {
         'hero.cta': 'Get a Free Estimate',
         'hero.cta2': 'View Our Projects',
         'project.viewDetails': 'View Details',
+        'slider.before': 'BEFORE',
+        'slider.after': 'AFTER',
+        'slider.beforeAlt': 'Before',
+        'slider.afterAlt': 'After',
         'about.badge': 'About Us',
         'about.title1': 'Passion for ',
         'about.titleHighlight': 'Carpentry',

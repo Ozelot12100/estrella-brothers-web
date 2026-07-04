@@ -176,8 +176,8 @@ const featuredProjects = allProjects
 										class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
 										loading="lazy"
 									/>
-									<div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-										<a href={localizePath("contact", lang)} class="text-white font-semibold bg-blue-600/90 hover:bg-blue-600 px-6 py-2 rounded-lg backdrop-blur-sm transition-colors w-full text-center">
+									<div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 flex items-end p-6">
+										<a href={localizePath("contact", lang)} class="text-white font-semibold bg-blue-700/90 hover:bg-blue-800 px-6 py-2 rounded-lg backdrop-blur-sm transition-colors w-full text-center">
 											{t("services.requestEstimate")}
 										</a>
 									</div>
@@ -248,7 +248,7 @@ const featuredProjects = allProjects
 
 	<!-- Call to Action Section -->
 	<section
-		class="py-20 bg-blue-600 dark:bg-blue-900 text-white relative overflow-hidden transition-colors duration-300"
+		class="py-20 bg-blue-700 dark:bg-blue-900 text-white relative overflow-hidden transition-colors duration-300"
 	>
 		<!-- Decorative Background -->
 		<div class="absolute inset-0 z-0 opacity-10">
@@ -293,7 +293,7 @@ const featuredProjects = allProjects
 					href={`tel:${siteConfig.author.phone.e164}`}
 					variant="outline"
 					size="lg"
-					class="border-white text-white hover:bg-white hover:text-blue-600"
+					class="border-white text-white hover:bg-white hover:text-blue-700"
 				>
 					<svg
 						class="w-5 h-5 mr-2"

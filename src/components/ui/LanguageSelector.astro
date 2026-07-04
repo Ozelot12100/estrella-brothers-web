@@ -15,7 +15,7 @@ const flags: Record<string, string> = {
 <div class="relative language-selector">
     <button
         type="button"
-        class="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium px-4 py-2 rounded-lg transition-colors"
+        class="flex items-center gap-1 min-h-11 text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400 font-medium px-4 py-2 rounded-lg transition-colors"
         aria-expanded="false"
         aria-haspopup="true"
         aria-label={lang === "es" ? "Cambiar idioma" : "Change language"}
@@ -57,7 +57,7 @@ const flags: Record<string, string> = {
                     <li>
                         <a
                             href={translatePath(currentPath, code as Lang)}
-                            class={`px-4 py-2 text-sm flex items-center gap-2 ${lang === code ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-700/50 font-bold" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"}`}
+                            class={`px-4 py-2 text-sm flex items-center gap-2 ${lang === code ? "text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-700/50 font-bold" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700"}`}
                         >
                             <span class="text-lg">{flags[code]}</span>
                             {name}

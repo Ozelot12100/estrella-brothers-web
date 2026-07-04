@@ -20,7 +20,7 @@ const navItems = [
 <header
     class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-slate-800 transition-colors duration-300"
 >
-    <nav class="container mx-auto px-4 py-4">
+    <nav class="container mx-auto px-4 py-4" aria-label={t("a11y.mainNav")}>
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <a
@@ -46,7 +46,7 @@ const navItems = [
                             <li>
                                 <a
                                     href={item.href}
-                                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                                    class="text-gray-700 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400 font-medium transition-colors"
                                 >
                                     {item.name}
                                 </a>
@@ -64,7 +64,7 @@ const navItems = [
 
                 <a
                     href={`tel:${siteConfig.author.phone.e164}`}
-                    class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
+                    class="ml-4 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-lg font-semibold transition-colors"
                 >
                     {t("nav.call")}
                 </a>
@@ -75,7 +75,7 @@ const navItems = [
                 <ThemeToggle />
                 <button
                     id="mobile-menu-button"
-                    class="p-2 text-gray-700 dark:text-gray-300"
+                    class="inline-flex items-center justify-center min-w-11 min-h-11 p-2 text-gray-700 dark:text-gray-300"
                     aria-label="Toggle menu"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
@@ -114,7 +114,7 @@ const navItems = [
                         <li>
                             <a
                                 href={item.href}
-                                class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                                class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400"
                             >
                                 {item.name}
                             </a>
@@ -126,7 +126,7 @@ const navItems = [
                 >
                     <a
                         href={`tel:${siteConfig.author.phone.e164}`}
-                        class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center"
+                        class="block w-full bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold text-center"
                     >
                         {t("nav.callNow")}
                     </a>

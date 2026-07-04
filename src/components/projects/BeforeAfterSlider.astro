@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 interface Props {
     beforeImage: ImageMetadata;
@@ -9,6 +10,9 @@ interface Props {
 }
 
 const { beforeImage, afterImage, alt } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
@@ -16,7 +20,7 @@ const { beforeImage, afterImage, alt } = Astro.props;
         <div slot="first" class="w-full h-full">
             <Image
                 src={beforeImage}
-                alt={`Antes - ${alt}`}
+                alt={`${t("slider.beforeAlt")} - ${alt}`}
                 class="w-full h-full object-cover"
                 widths={[768, 1024, 1920]}
                 sizes="(max-width: 768px) 100vw, 1024px"
@@ -24,22 +28,22 @@ const { beforeImage, afterImage, alt } = Astro.props;
             <div
                 class="absolute top-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg font-semibold"
             >
-                ANTES
+                {t("slider.before")}
             </div>
         </div>
 
         <div slot="second" class="w-full h-full">
             <Image
                 src={afterImage}
-                alt={`Después - ${alt}`}
+                alt={`${t("slider.afterAlt")} - ${alt}`}
                 class="w-full h-full object-cover"
                 widths={[768, 1024, 1920]}
                 sizes="(max-width: 768px) 100vw, 1024px"
             />
             <div
-                class="absolute top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold"
+                class="absolute top-4 right-4 bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold"
             >
-                DESPUÉS
+                {t("slider.after")}
             </div>
         </div>
     </img-comparison-slider>
@@ -57,7 +61,8 @@ const { beforeImage, afterImage, alt } = Astro.props;
         --default-handle-opacity: 1;
     }
 
-    img-comparison-slider:focus {
-        outline: none;
+    img-comparison-slider:focus-visible {
+        outline: 2px solid var(--color-blue-700);
+        outline-offset: 2px;
     }
 </style>

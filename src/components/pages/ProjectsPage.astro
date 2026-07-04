@@ -42,7 +42,7 @@ const categories = [
         <!-- Category Filter -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
             <button
-                class="category-filter active px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-400"
+                class="category-filter active px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-700 dark:hover:border-blue-400"
                 data-category="All"
             >
                 {t("projects.filterAll")}
@@ -50,7 +50,7 @@ const categories = [
             {
                 categories.map((category) => (
                     <button
-                        class="category-filter px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-400"
+                        class="category-filter px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-700 dark:hover:border-blue-400"
                         data-category={category}
                     >
                         {t(`category.${category}`)}
@@ -89,8 +89,8 @@ const categories = [
 <style>
     /* El estado activo se maneja con una sola clase en vez de togglear utilidades desde JS */
     button.category-filter.active {
-        background-color: var(--color-blue-600);
-        border-color: var(--color-blue-600);
+        background-color: var(--color-blue-700);
+        border-color: var(--color-blue-700);
         color: white;
     }
 </style>

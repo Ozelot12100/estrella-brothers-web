@@ -6,6 +6,17 @@
 ScrollReveal component injects a script that automatically observes 
 elements with the 'reveal-on-scroll' class and animates them when they enter the viewport.
 -->
+<!-- Si el JS está deshabilitado, forzar la visibilidad para no ocultar secciones (incl. el CTA principal) -->
+<noscript>
+    <style>
+        .reveal-on-scroll {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+    </style>
+</noscript>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Setup intersection observer for scroll animations

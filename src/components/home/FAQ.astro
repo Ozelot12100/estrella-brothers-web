@@ -1,12 +1,13 @@
 ---
 import { getLangFromUrl } from "../../i18n/utils";
+import { localizePath } from "../../i18n/routes";
 
 const lang = getLangFromUrl(Astro.url);
 
 const faqsEs = [
     {
-        question: "¿Tienen licencia y seguro comercial?",
-        answer: "Sí, operamos con todas las licencias necesarias del estado de Arizona y contamos con seguro de responsabilidad civil (General Liability) para garantizar la seguridad de su proyecto y su propiedad.",
+        question: "¿Qué respalda su trabajo?",
+        answer: "Desde el 2020 hemos completado con éxito alrededor de 100 proyectos en el área de Phoenix. Respaldamos cada trabajo con garantía por escrito en la mano de obra, materiales de calidad y apego a los códigos de construcción vigentes. Con gusto le compartimos fotos y referencias de proyectos anteriores.",
     },
     {
         question: "¿Cómo funciona el proceso de cotización?",
@@ -22,14 +23,14 @@ const faqsEs = [
     },
     {
         question: "¿Se encargan de los permisos con la ciudad?",
-        answer: "Sí, dependiendo del tamaño y tipo de proyecto, nosotros nos encargamos de todo el proceso de planos y permisos con la ciudad correspondiente para que usted no tenga que preocuparse por la burocracia.",
+        answer: "Sí. Según el tamaño y tipo de proyecto, le ayudamos a preparar los planos y a coordinar los permisos con la ciudad correspondiente, guiándole en cada paso para que el proceso sea sencillo.",
     },
 ];
 
 const faqsEn = [
     {
-        question: "Are you licensed and insured?",
-        answer: "Yes, we operate with all necessary licenses in the state of Arizona and carry General Liability insurance to ensure the safety of your project and property.",
+        question: "What stands behind your work?",
+        answer: "Since 2020 we have successfully completed around 100 projects across the Phoenix area. We back every job with a written workmanship warranty, quality materials, and compliance with current building codes. We're happy to share photos and references from past projects.",
     },
     {
         question: "How does the estimating process work?",
@@ -45,7 +46,7 @@ const faqsEn = [
     },
     {
         question: "Do you handle city permits?",
-        answer: "Yes, depending on the size and scope of the project, we handle the entire blueprint and permitting process with the respective city offices so you don't have to worry about the bureaucracy.",
+        answer: "Yes. Depending on the size and scope of the project, we help you prepare the plans and coordinate the permits with the city, guiding you through each step so the process is easy.",
     },
 ];
 
@@ -63,7 +64,7 @@ const contactQuestionText = isEn
 const contactLinkText = isEn
     ? "Contact us directly &rarr;"
     : "Contáctenos directamente &rarr;";
-const contactHref = isEn ? "/en/contacto" : "/contacto";
+const contactHref = localizePath("contact", lang);
 ---
 
 <section
@@ -91,14 +92,14 @@ const contactHref = isEn ? "/en/contacto" : "/contacto";
                 faqs.map((faq, index) => (
                     <div class="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-800 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
                         <button
-                            class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                            class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-inset rounded-xl"
                             aria-expanded="false"
                             aria-controls={`faq-answer-${index}`}
                         >
                             <span class="text-lg font-bold text-gray-900 dark:text-gray-100 pr-8">
                                 {faq.question}
                             </span>
-                            <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 faq-icon">
+                            <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 faq-icon">
                                 <svg
                                     class="w-6 h-6"
                                     fill="none"
@@ -133,7 +134,7 @@ const contactHref = isEn ? "/en/contacto" : "/contacto";
             </p>
             <a
                 href={contactHref}
-                class="text-blue-600 dark:text-blue-400 font-bold hover:text-blue-800 dark:hover:text-blue-300 hover:underline transition-colors"
+                class="text-blue-700 dark:text-blue-400 font-bold hover:text-blue-800 dark:hover:text-blue-300 hover:underline transition-colors"
                 set:html={contactLinkText}
             />
         </div>
