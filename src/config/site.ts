@@ -2,7 +2,7 @@ import type { SiteConfig } from '../types';
 
 export const siteConfig: SiteConfig = {
     name: 'Estrella Brothers',
-    url: 'https://estrellabrotherscarpentry.com',
+    url: 'https://www.estrellabrotherscarpentry.com',
     author: {
         name: 'Luis Estrella',
         phone: {

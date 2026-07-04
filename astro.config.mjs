@@ -10,7 +10,7 @@ const isDev = process.argv.includes('dev');
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://estrellabrotherscarpentry.com',
+  site: 'https://www.estrellabrotherscarpentry.com',
   output: 'static',
 
   i18n: {
