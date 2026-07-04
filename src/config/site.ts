@@ -7,9 +7,9 @@ export const siteConfig: SiteConfig = {
     url: 'https://estrellabrotherscarpentry.com',
     locale: 'es-US',
     author: {
-        name: 'Estrella Brothers',
+        name: 'Luis Estrella',
         phone: '+1 (480) 514-6765',
-        email: 'contacto@estrellabrotherscarpentry.com',
+        email: 'Estrellitaluis123@gmail.com',
     },
     business: {
         location: 'Phoenix, Arizona',
