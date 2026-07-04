@@ -70,3 +70,57 @@ Notas:
 - Las fotos raw eliminadas en la fase 7 permanecen en el historial de git; purgarlas del historial requeriría `git filter-repo` (decisión futura, fuera de alcance).
 - Los redirects de Vercel (fase 6) solo son verificables tras el deploy: comprobar con `curl -I https://estrellabrotherscarpentry.com/proyectos` (debe responder 308 → `/projects/`) y lo mismo para `/contacto` y `/proyectos/proyecto-01`.
 - Verificación final local: `npm run build` (incluye `astro check`, 0 errores) y click-through de todas las rutas EN/ES en `astro preview` (todas 200, contenido localizado, 404 bilingüe).
+
+---
+
+# Segunda auditoría — Documentación y UX/UI (julio 2026)
+
+## 🔴 Integridad de contenido (legal)
+
+| # | Hallazgo | Ubicación | Estado |
+|---|----------|-----------|--------|
+| C1 | El FAQ afirmaba tener licencia de Arizona y seguro de responsabilidad civil (General Liability). El negocio **no** los tiene todavía → afirmación falsa con riesgo legal (AZ ROC). Reformulado a trayectoria/garantía verídica; suavizado el claim de gestión de permisos. **Restaurar la afirmación real cuando se obtenga la licencia (~1 año).** | `src/components/home/FAQ.astro:8-9,31-32` | ✅ Corregido |
+
+## 🐛 UX — bug de conversión
+
+| # | Hallazgo | Ubicación | Estado |
+|---|----------|-----------|--------|
+| U1 | Enlace "Contáctenos directamente" del FAQ hardcodeado: EN → `/en/contacto` (404); ES → `/contacto` (redirige a la versión inglesa). Migrado a `localizePath` | `src/components/home/FAQ.astro:66` | ✅ Corregido |
+| U2 | Slider "ANTES/DESPUÉS" hardcodeado en español, visible en páginas EN | `src/components/projects/BeforeAfterSlider.astro` | ✅ Corregido |
+
+## ♿ Accesibilidad
+
+| # | Hallazgo | Ubicación | Estado |
+|---|----------|-----------|--------|
+| UX1 | Sin "skip to content" | `src/layouts/Layout.astro` | ✅ Corregido |
+| UX2 | Foco de teclado eliminado sin reemplazo (acordeón FAQ, slider antes/después) | `FAQ.astro:94`, `BeforeAfterSlider.astro` | ✅ Corregido |
+| UX3 | CTA de servicios solo visible con hover (invisible al foco por teclado) | `HomePage.astro` (overlay) | ✅ Corregido (`group-focus-within`) |
+| UX4 | Contraste sub-AA por el remapeo ámbar (`blue-600` = `#d97706`, ~3.3:1) en badges, botones pequeños y links | sistémico | ✅ Corregido (ámbar → `blue-700`, hovers → `blue-800`) |
+| UX5 | `prefers-reduced-motion` no cubría `animate-bounce-slow` ni `scroll-smooth` | `global.css`, `AboutSection.astro` | ✅ Corregido |
+| UX6 | `<nav>` sin `aria-label`; áreas táctiles < 44px (tema, hamburguesa, idioma) | `Header.astro`, `ThemeToggle.astro`, `LanguageSelector.astro` | ✅ Corregido |
+
+## 🛡️ Robustez
+
+| # | Hallazgo | Ubicación | Estado |
+|---|----------|-----------|--------|
+| UX7 | ScrollReveal oculta Servicios/Proyectos/CTA con `opacity:0`; si el JS falla quedan invisibles | `src/components/ui/ScrollReveal.astro` | ✅ Corregido (fallback `<noscript>`) |
+| UX8 | Header (~88-96px) más alto que el offset `pt-20` del `main` (recorte latente) | `src/layouts/Layout.astro` | ✅ Corregido (`pt-24`) |
+
+## 📄 Documentación
+
+| # | Hallazgo | Estado |
+|---|----------|--------|
+| D1 | Los 4 docs usaban `pnpm`; el proyecto usa `npm` | ✅ Corregido |
+| D2 | Plantillas de proyecto con `category: "Remodelación"` (enum inválido → rompe el build) | ✅ Corregido (enum en inglés documentado) |
+| D3 | README afirmaba "Formulario de contacto (Netlify Forms)" — no existe | ✅ Corregido |
+| D4 | Rutas de archivo obsoletas (`content/config.ts`, `contacto.astro`, `proyectos/`), sin árbol `es/` ni `components/pages/` | ✅ Corregido |
+| D5 | `site.ts`: `phone` como string (ahora objeto `{e164, display}`); `title/description/locale` ya no existen | ✅ Corregido |
+| D6 | Sistema i18n sin documentar (pieza central del refactor); campos bilingües `titleEs/descriptionEs` no explicados | ✅ Corregido |
+| D7 | Marca vieja "Luis Estrella / Portfolio" en vez de "Estrella Brothers"; dominio `www` no mencionado | ✅ Corregido |
+| D8 | Documentación Técnica: "CDN Cloudflare" (es Vercel) y "Archivos .mdx" (solo `.md`) | ✅ Corregido |
+
+## Observaciones (sin acción de código)
+
+- **Restaurar licencia/seguro en el FAQ** cuando el negocio los obtenga (~2027). Mientras tanto, no se muestran badges de "Licensed & Insured" para no afirmar algo falso.
+- **El slider "Antes/Después"** (una característica destacada) no lo usa ningún proyecto actual: ninguno define `beforeImage`/`afterImage`. El código quedó localizado y listo; falta agregar contenido con esas imágenes.
+- **CTA de llamar en el header móvil**: hoy vive dentro del menú hamburguesa (el botón flotante de WhatsApp compensa parcialmente). Mejora opcional de conversión pendiente de decisión.

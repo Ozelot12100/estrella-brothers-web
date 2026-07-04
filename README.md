@@ -1,101 +1,121 @@
-# Portfolio Luis Estrella - Carpintería Profesional en Phoenix, AZ
+# Estrella Brothers Carpentry — Sitio web
 
-Sitio web estático de alto rendimiento construido con Astro 5, TypeScript y Tailwind CSS para mostrar proyectos de carpintería y remodelaciones.
+Sitio estático bilingüe (inglés/español) de **Estrella Brothers Carpentry**, servicios de carpintería, framing y remodelación en Phoenix, AZ. Construido con Astro 5, TypeScript y Tailwind CSS 4.
 
-## 🚀 Estructura del Proyecto
+- **Producción:** https://www.estrellabrotherscarpentry.com
+- **Idiomas:** inglés (por defecto, sin prefijo) y español (bajo `/es/`)
+- **Contacto/leads:** WhatsApp y llamada telefónica (no hay formulario ni backend)
+
+## 🚀 Estructura del proyecto
 
 ```
 /
-├── public/              # Archivos estáticos (favicon, robots.txt)
+├── public/                 # Estáticos servidos tal cual
+│   ├── favicon.ico, favicon-16/32.png, apple-touch-icon.png
+│   ├── icon-192.png, icon-512.png, site.webmanifest
+│   ├── og-image.jpg        # Vista previa al compartir (generada del logo)
+│   └── robots.txt
 ├── src/
 │   ├── assets/
-│   │   └── projects/    # Imágenes de proyectos (1920px max)
+│   │   ├── projects/        # Imágenes curadas de proyectos (.webp)
+│   │   └── logo/            # Logo de la marca
 │   ├── components/
-│   │   ├── common/      # Header, Footer, SEOHead
-│   │   ├── projects/    # ProjectCard, BeforeAfterSlider
-│   │   └── ui/          # Button, etc.
+│   │   ├── common/          # Header, Footer, SEOHead
+│   │   ├── home/            # AboutSection, Testimonials, FAQ
+│   │   ├── pages/           # Cuerpo real de cada página (ver abajo)
+│   │   ├── projects/        # ProjectCard, BeforeAfterSlider
+│   │   └── ui/              # Button, ThemeToggle, LanguageSelector, ScrollReveal, WhatsAppButton
 │   ├── config/
-│   │   └── site.ts      # Configuración del sitio
+│   │   └── site.ts          # Datos del negocio (nombre, teléfono, áreas, servicios)
 │   ├── content/
-│   │   ├── config.ts    # Schema de Content Collections
-│   │   └── projects/    # Archivos .md de cada proyecto
+│   │   └── projects/        # Un .md por proyecto
+│   ├── content.config.ts    # Schema (Zod) + loader de la colección de proyectos
+│   ├── i18n/
+│   │   ├── ui.ts            # Diccionario de todos los textos (en/es)
+│   │   ├── routes.ts        # Mapa de rutas por idioma + helpers de enlaces
+│   │   └── utils.ts         # getLangFromUrl, useTranslations
 │   ├── layouts/
-│   │   └── Layout.astro # Layout base con SEO
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── contacto.astro
-│   │   └── proyectos/
-│   │       ├── index.astro    # Galería
-│   │       └── [slug].astro   # Detalle del proyecto
+│   │   └── Layout.astro     # Layout base (head, tema, skip link)
+│   ├── pages/               # Wrappers finos; ES refleja EN bajo /es/
+│   │   ├── index.astro          → HomePage
+│   │   ├── contact.astro        → ContactPage
+│   │   ├── 404.astro            # 404 bilingüe (client-side)
+│   │   ├── projects/
+│   │   │   ├── index.astro      → ProjectsPage
+│   │   │   └── [slug].astro     → ProjectDetailPage
+│   │   └── es/                  # /es/, /es/contacto, /es/proyectos, ...
 │   ├── styles/
-│   │   └── global.css
+│   │   └── global.css       # Tailwind + tema (remapeo de color) + reduced-motion
+│   ├── utils/
+│   │   └── contact.ts       # waLink() para los enlaces de WhatsApp
 │   └── types/
-│       └── index.ts     # Tipos TypeScript globales
+│       └── index.ts         # Tipos (SiteConfig, ServiceKey, SEOProps)
 ├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+├── vercel.json              # Deploy + redirects 308 de las URLs viejas
+└── package.json
 ```
 
-## 📋 Comandos Disponibles
+**Nota de arquitectura:** los archivos en `src/pages/**` son wrappers de ~5 líneas; el contenido real vive en `src/components/pages/{HomePage,ProjectsPage,ProjectDetailPage,ContactPage}.astro`, que detectan el idioma desde la URL. Así una sola implementación sirve a ambos idiomas.
 
-| Comando          | Acción                                      |
-|:-----------------|:--------------------------------------------|
-| `pnpm install`   | Instalar dependencias                       |
-| `pnpm dev`       | Iniciar servidor de desarrollo en `localhost:4321` |
-| `pnpm build`     | Compilar sitio para producción en `./dist/` |
-| `pnpm preview`   | Vista previa del build antes de deploy      |
+## 📋 Comandos
+
+Este proyecto usa **npm** (hay `package-lock.json`).
+
+| Comando          | Acción                                                        |
+|:-----------------|:--------------------------------------------------------------|
+| `npm install`    | Instalar dependencias                                         |
+| `npm run dev`    | Servidor de desarrollo en `localhost:4321`                    |
+| `npm run build`  | Verifica tipos (`astro check`) y compila a `./dist/`          |
+| `npm run preview`| Vista previa local del build de producción                   |
+
+> `npm run build` corre `astro check` antes de compilar: un error de tipos o de schema de contenido **detiene el build** (y el deploy en Vercel).
+
+## 🌐 Internacionalización (i18n)
+
+- Todos los textos visibles viven en [`src/i18n/ui.ts`](src/i18n/ui.ts), un diccionario por idioma. Para cambiar un texto, edítalo ahí (en las dos claves `en` y `es`).
+- Las rutas por idioma están en [`src/i18n/routes.ts`](src/i18n/routes.ts). Usa `localizePath("contact", lang)` para enlaces internos y nunca escribas rutas a mano.
+- El inglés no lleva prefijo (`/projects`, `/contact`); el español va bajo `/es/` con slugs en español (`/es/proyectos`, `/es/contacto`). Los redirects de las URLs antiguas están en `vercel.json`.
 
 ## 🎨 Personalización
 
-### Información del Negocio
+**Información del negocio** — [`src/config/site.ts`](src/config/site.ts): nombre, `author.phone` (objeto `{ e164, display }`), email, áreas de servicio y `serviceTypes` (claves; sus etiquetas visibles están en `ui.ts` como `service.*`).
 
-Edita `src/config/site.ts` para actualizar:
-- Nombre del negocio
-- Teléfono y email
-- Áreas de servicio
-- Tipos de servicios
+**Agregar un proyecto** — ver [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md).
 
-### Agregar Proyectos
+**Iconos / vista previa social** — se generan a partir del logo (ver [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md#iconos-y-og-image)).
 
-Lee la guía completa en `GUIA_PROYECTOS.md`
+## 🚢 Despliegue (Vercel)
 
-## 🚢 Despliegue
+El proyecto está configurado para **Vercel** ([`vercel.json`](vercel.json)): build `npm run build`, salida `dist`, `trailingSlash: true` y redirects 308 de las URLs en español antiguas (`/proyectos → /projects/`, `/contacto → /contact/`).
 
-### Vercel (Recomendado)
+1. Haz push a GitHub → Vercel despliega automáticamente en cada push a `master`.
+2. El dominio primario es `www.estrellabrotherscarpentry.com` (el apex redirige a `www`).
 
-1. Haz push a GitHub
-2. Importa el proyecto en [Vercel](https://vercel.com)
-3. Configura el dominio personalizado
+> Otros hosts estáticos también sirven el `dist/`, pero perderían los redirects de `vercel.json`; habría que reconfigurarlos en el host.
 
-### Netlify
+## 🔧 Stack
 
-1. Haz push a GitHub
-2. Importa el proyecto en [Netlify](https://netlify.com)
-3. Build command: `pnpm build`
-4. Publish directory: `dist`
-
-## 🔧 Stack Tecnológico
-
-- **Framework:** Astro 5.x
-- **Estilos:** Tailwind CSS v4
-- **Lenguaje:** TypeScript (Strict)
-- **Optimización de Imágenes:** astro:assets + Sharp
-- **SEO:** @astrojs/sitemap + Schema.org
-- **Interactividad:** Web Components (img-comparison-slider)
+- **Framework:** Astro 5 (salida estática, 0 kB de JS por defecto)
+- **Estilos:** Tailwind CSS 4 (con modo oscuro por clase y un remapeo de color a tonos ámbar/piedra en `global.css`)
+- **Lenguaje:** TypeScript (strict)
+- **Imágenes:** `astro:assets` + Sharp (WebP responsivo)
+- **SEO:** `@astrojs/sitemap`, hreflang y Schema.org por idioma
+- **Interactividad:** Web Components (`img-comparison-slider` para antes/después)
+- **Dev:** `astro-mcp` (solo en desarrollo)
 
 ## 📱 Características
 
-✅ Optimización automática de imágenes (WebP/AVIF)  
-✅ Slider "Antes y Después" para proyectos  
-✅ SEO local optimizado para Phoenix, AZ  
-✅ Core Web Vitals optimizados  
-✅ 100% estático (sin servidor)  
-✅ Responsive design  
-✅ Formulario de contacto (Netlify Forms)
+✅ Bilingüe EN/ES con hreflang y metadatos por idioma
+✅ Modo oscuro con preferencia del sistema y toggle
+✅ Optimización automática de imágenes (WebP responsivo)
+✅ Slider "Antes y Después" para proyectos (opcional por proyecto)
+✅ Contacto por WhatsApp y llamada, con botón flotante
+✅ SEO local para Phoenix, AZ; 100% estático
+✅ Accesibilidad: skip link, focus visible, `prefers-reduced-motion`, áreas táctiles ≥44px
 
-## 📞 Soporte
+## 📚 Documentación
 
-Para dudas técnicas, consulta la documentación de:
-- [Astro](https://docs.astro.build)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Content Collections](https://docs.astro.build/en/guides/content-collections/)
+- [`INICIO_RAPIDO.md`](INICIO_RAPIDO.md) — puesta en marcha rápida
+- [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md) — cómo agregar proyectos e imágenes
+- [`Documentación Técnica.md`](Documentación%20Técnica.md) — arquitectura
+- [`AUDITORIA.md`](AUDITORIA.md) — hallazgos de auditoría y su estado

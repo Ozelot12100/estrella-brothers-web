@@ -1,137 +1,74 @@
-# Inicio Rápido - Portfolio Luis Estrella
+# Inicio rápido
 
-Este proyecto está completamente configurado y listo para usar. Sigue estos pasos para comenzar:
+Sitio de **Estrella Brothers Carpentry** (Astro 5 + Tailwind 4, bilingüe EN/ES). Ya está configurado; estos son los pasos para trabajar en él.
 
-## 🚀 Paso 1: Instalar Dependencias
+## Paso 1: Instalar dependencias
+
+Este proyecto usa **npm**:
 
 ```bash
-pnpm install
+npm install
 ```
 
-## 📸 Paso 2: Agregar Tus Imágenes
+## Paso 2: Desarrollo local
 
-1. Redimensiona tus fotos a **1920px de ancho máximo** usando:
-   - [PowerToys Image Resizer](https://learn.microsoft.com/en-us/windows/powertoys/) (Windows)
-   - [BulkResizePhotos](https://bulkresizephotos.com/) (Online)
-
-2. Renombra con nombres descriptivos:
-   ```
-   remodelacion-cocina-scottsdale-antes.jpg
-   remodelacion-cocina-scottsdale-despues.jpg
-   framing-casa-phoenix-cover.jpg
-   ```
-
-3. Guárdalas en: `src/assets/projects/`
-
-## 📝 Paso 3: Crear Tu Primer Proyecto
-
-Crea un archivo en `src/content/projects/mi-primer-proyecto.md`:
-
-```markdown
----
-title: "Remodelación de Cocina en Scottsdale"
-date: 2025-02-10
-category: "Remodelación"
-location: "Scottsdale, AZ"
-description: "Remodelación completa de cocina moderna con gabinetes personalizados."
-coverImage: ../../assets/projects/cocina-cover.jpg
-beforeImage: ../../assets/projects/cocina-antes.jpg
-afterImage: ../../assets/projects/cocina-despues.jpg
-featured: true
-tags: ["Cocina", "Moderna"]
----
-
-## Descripción del Proyecto
-
-Aquí va la descripción detallada de tu proyecto...
-
-### Características
-
-- Característica 1
-- Característica 2
+```bash
+npm run dev
 ```
 
-**⚠️ Rutas de Imágenes:** Usa rutas relativas `../../assets/projects/nombre.jpg`
+Abre http://localhost:4321.
 
-## 🎨 Paso 4: Personalizar Información
+## Paso 3: Editar los textos
 
-Edita `src/config/site.ts`:
+Todo el texto visible del sitio vive en [`src/i18n/ui.ts`](src/i18n/ui.ts), con una clave en `en` y otra en `es`. Edita ahí (ambos idiomas) en lugar de tocar los componentes.
+
+## Paso 4: Datos del negocio
+
+Edita [`src/config/site.ts`](src/config/site.ts):
 
 ```typescript
-export const siteConfig = {
-  name: 'Tu Nombre',
-  title: 'Tu Título SEO',
-  description: 'Tu Descripción',
-  url: 'https://tu-dominio.com',
+export const siteConfig: SiteConfig = {
+  name: 'Estrella Brothers',
+  url: 'https://www.estrellabrotherscarpentry.com',
   author: {
-    name: 'Tu Nombre',
-    phone: '+1 (480) 000-0000',  // ← Cambia esto
-    email: 'tu@email.com',       // ← Cambia esto
+    name: 'Luis Estrella',
+    phone: {
+      e164: '+14805146765',       // ← para tel: y WhatsApp (sin espacios)
+      display: '+1 (480) 514-6765', // ← como se muestra en pantalla
+    },
+    email: 'tu@email.com',
   },
-  // ...resto de configuración
+  business: {
+    location: 'Phoenix, Arizona',
+    areaServed: ['Phoenix', 'Scottsdale', 'Mesa', 'Tempe', 'Chandler', 'Gilbert'],
+    // Claves de servicio; sus etiquetas visibles están en ui.ts (service.*)
+    serviceTypes: ['framing', 'remodeling', 'decks', 'carpentry', 'finishes', 'woodrot'],
+  },
 };
 ```
 
-## 💻 Paso 5: Desarrollo Local
+> El teléfono es un objeto `{ e164, display }`, no un string. `e164` alimenta los enlaces `tel:` y `wa.me`; `display` es lo que ve el usuario.
+
+## Paso 5: Agregar proyectos
+
+Cada proyecto es un `.md` en `src/content/projects/` con imágenes en `src/assets/projects/`. La guía completa (plantilla, campos bilingües y **categorías válidas**) está en [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md).
+
+## Paso 6: Build y deploy
 
 ```bash
-pnpm dev
+npm run build    # verifica tipos + compila a dist/
+npm run preview  # vista previa local del build
 ```
 
-Abre http://localhost:4321 en tu navegador.
+El deploy es automático en **Vercel** con cada push a `master` (ver [`vercel.json`](vercel.json)).
 
-## 🏗️ Paso 6: Build para Producción
+## Problemas comunes
 
-```bash
-pnpm build
-pnpm preview  # Ver preview local
-```
+**`category: Invalid enum value` / falla `astro check`**
+El valor de `category` debe ser uno de: `Framing, Deck, Carpentry, Patio, Roofing, Interior, Addition, Repair` (ver [GUIA_PROYECTOS.md](GUIA_PROYECTOS.md#4-categorías-válidas)).
 
-## 🚢 Paso 7: Desplegar
+**`coverImage: Required` o error de imagen**
+Revisa que la ruta relativa sea correcta (`../../assets/projects/imagen.webp`) y que el archivo exista (los nombres distinguen mayúsculas/minúsculas).
 
-### Opción A: Vercel (Recomendado)
-
-1. Push tu código a GitHub
-2. Ve a [vercel.com](https://vercel.com) → "Import Project"
-3. Conecta tu repositorio
-4. ¡Listo! Auto-deploy en cada push
-
-### Opción B: Netlify
-
-1. Push tu código a GitHub
-2. Ve a [netlify.com](https://netlify.com) → "Add new site"
-3. Conecta tu repositorio
-4. Build command: `pnpm build`
-5. Publish directory: `dist`
-
-## 📚 Recursos
-
-- [GUIA_PROYECTOS.md](./GUIA_PROYECTOS.md) - Guía completa de proyectos
-- [README.md](./README.md) - Documentación técnica completa
-- [Astro Docs](https://docs.astro.build)
-
-## ⚡ Comandos Útiles
-
-```bash
-pnpm dev          # Desarrollo
-pnpm build        # Build producción
-pnpm preview      # Preview del build
-```
-
-## 🆘 Problemas Comunes
-
-**Error: "coverImage: Required"**
-- Asegúrate de que la ruta de la imagen en el frontmatter sea correcta
-- Usa rutas relativas: `../../assets/projects/imagen.jpg`
-
-**Warning: "Collection projects is empty"**
-- Normal si no tienes proyectos aún
-- Agrega al menos un archivo .md en `src/content/projects/`
-
-**404 en imágenes**
-- Verifica que las imágenes existan en `src/assets/projects/`
-- Revisa que los nombres coincidan exactamente (case-sensitive)
-
----
-
-**¡Tu sitio está listo para brillar! 🌟**
+**Un enlace interno lleva al idioma equivocado**
+No escribas rutas a mano; usa `localizePath("contact", lang)` de [`src/i18n/routes.ts`](src/i18n/routes.ts).
