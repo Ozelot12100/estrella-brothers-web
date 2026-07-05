@@ -124,3 +124,15 @@ Notas:
 - **Restaurar licencia/seguro en el FAQ** cuando el negocio los obtenga (~2027). Mientras tanto, no se muestran badges de "Licensed & Insured" para no afirmar algo falso.
 - **El slider "Antes/Después"** (una característica destacada) no lo usa ningún proyecto actual: ninguno define `beforeImage`/`afterImage`. El código quedó localizado y listo; falta agregar contenido con esas imágenes.
 - **CTA de llamar en el header móvil**: hoy vive dentro del menú hamburguesa (el botón flotante de WhatsApp compensa parcialmente). Mejora opcional de conversión pendiente de decisión.
+
+---
+
+# Evolución posterior a las auditorías (julio 2026)
+
+Cambios mayores aplicados después de cerrar las dos auditorías. Actualizan el estado del sitio y **dejan obsoletos** algunos hallazgos anteriores (marcados abajo).
+
+- **Rediseño "Artisan Timber & Earth"** — se reemplazó el sistema visual anterior (remapeo de color ámbar/piedra + modo oscuro) por una identidad cálida derivada del logo: superficie crema, primario umber quemado, secundario roble tostado; titulares en **Source Serif 4** y cuerpo en **Work Sans** (auto-alojadas con `@fontsource-variable`). Se **eliminó el modo oscuro** y el componente `ThemeToggle`, y se añadió `MobileBar` (barra inferior móvil con Llamar/WhatsApp/Proyectos/Cotizar). → *Deja obsoletos UX4 y UX5 (eran del sistema de color ámbar anterior).*
+- **CTA de llamar en móvil** — resuelto por la nueva `MobileBar` fija (ya no depende del menú hamburguesa). → *Cierra la observación "CTA de llamar en el header móvil".*
+- **Fotos reales** — se reemplazaron las imágenes de stock por fotos del trabajo real de Luis. La galería quedó en **6 proyectos verídicos** (ubicación "Phoenix, AZ", pendiente afinar ciudad por proyecto). `og-image.jpg` se regeneró desde una foto de proyecto (gazebo junto a alberca), no desde el logo.
+- **Íconos de marca** — el favicon mostraba un recorte cerrado e ilegible de las tablas (parecía madera sin forma, sobre todo en la miniatura de WhatsApp). Se regeneraron **todos** los íconos desde el logo completo con un esquema por tamaño: **marca de tablas cruzadas** para el favicon chico (16/32/48 + `.ico`, nítido en la pestaña) y **letrero completo** para los íconos grandes (WhatsApp, iOS, PWA). Detalle en [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md#iconos-y-og-image).
+- **Contacto y analítica** — formulario de contacto por `mailto:` (sin backend) en `ContactPage`; inyección (solo en producción) de los scripts de Vercel Web Analytics y Speed Insights. *(Pendiente del usuario: activarlos en el dashboard de Vercel; opcionalmente migrar el formulario a Web3Forms/Formspree con un access key.)*

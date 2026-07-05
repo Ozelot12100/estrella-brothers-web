@@ -11,20 +11,20 @@ Sitio estático bilingüe (inglés/español) de **Estrella Brothers Carpentry**,
 ```
 /
 ├── public/                 # Estáticos servidos tal cual
-│   ├── favicon.ico, favicon-16/32.png, apple-touch-icon.png
+│   ├── favicon.ico, favicon-16/32/48.png, apple-touch-icon.png
 │   ├── icon-192.png, icon-512.png, site.webmanifest
-│   ├── og-image.jpg        # Vista previa al compartir (generada del logo)
+│   ├── og-image.jpg        # Imagen grande al compartir (foto de proyecto 1200×630)
 │   └── robots.txt
 ├── src/
 │   ├── assets/
 │   │   ├── projects/        # Imágenes curadas de proyectos (.webp)
 │   │   └── logo/            # Logo de la marca
 │   ├── components/
-│   │   ├── common/          # Header, Footer, SEOHead
+│   │   ├── common/          # Header, Footer, SEOHead, MobileBar
 │   │   ├── home/            # AboutSection, Testimonials, FAQ
 │   │   ├── pages/           # Cuerpo real de cada página (ver abajo)
 │   │   ├── projects/        # ProjectCard, BeforeAfterSlider
-│   │   └── ui/              # Button, ThemeToggle, LanguageSelector, ScrollReveal, WhatsAppButton
+│   │   └── ui/              # Button, LanguageSelector, ScrollReveal, WhatsAppButton
 │   ├── config/
 │   │   └── site.ts          # Datos del negocio (nombre, teléfono, áreas, servicios)
 │   ├── content/
@@ -45,7 +45,7 @@ Sitio estático bilingüe (inglés/español) de **Estrella Brothers Carpentry**,
 │   │   │   └── [slug].astro     → ProjectDetailPage
 │   │   └── es/                  # /es/, /es/contacto, /es/proyectos, ...
 │   ├── styles/
-│   │   └── global.css       # Tailwind + tema (remapeo de color) + reduced-motion
+│   │   └── global.css       # Tailwind + diseño "Artisan Timber & Earth" (@theme) + tipografía + reduced-motion
 │   ├── utils/
 │   │   └── contact.ts       # waLink() para los enlaces de WhatsApp
 │   └── types/
@@ -82,7 +82,7 @@ Este proyecto usa **npm** (hay `package-lock.json`).
 
 **Agregar un proyecto** — ver [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md).
 
-**Iconos / vista previa social** — se generan a partir del logo (ver [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md#iconos-y-og-image)).
+**Iconos / vista previa social** — el favicon y los iconos de app se generan del logo; la `og-image.jpg` (imagen grande al compartir) es una foto de proyecto recortada a 1200×630 (ver [`GUIA_PROYECTOS.md`](GUIA_PROYECTOS.md#iconos-y-og-image)).
 
 ## 🚢 Despliegue (Vercel)
 
@@ -96,7 +96,8 @@ El proyecto está configurado para **Vercel** ([`vercel.json`](vercel.json)): bu
 ## 🔧 Stack
 
 - **Framework:** Astro 5 (salida estática, 0 kB de JS por defecto)
-- **Estilos:** Tailwind CSS 4 (con modo oscuro por clase y un remapeo de color a tonos ámbar/piedra en `global.css`)
+- **Estilos:** Tailwind CSS 4 con el sistema de diseño propio **"Artisan Timber & Earth"** (paleta crema/umber/roble derivada del logo), definido con `@theme` en `global.css`. Sin modo oscuro.
+- **Tipografía:** Source Serif 4 (titulares) + Work Sans (cuerpo), auto-alojadas con `@fontsource-variable` (sin CDN externo)
 - **Lenguaje:** TypeScript (strict)
 - **Imágenes:** `astro:assets` + Sharp (WebP responsivo)
 - **SEO:** `@astrojs/sitemap`, hreflang y Schema.org por idioma
@@ -106,7 +107,7 @@ El proyecto está configurado para **Vercel** ([`vercel.json`](vercel.json)): bu
 ## 📱 Características
 
 ✅ Bilingüe EN/ES con hreflang y metadatos por idioma
-✅ Modo oscuro con preferencia del sistema y toggle
+✅ Diseño "Artisan Timber & Earth": paleta cálida derivada del logo + tipografía serif/sans auto-alojada
 ✅ Optimización automática de imágenes (WebP responsivo)
 ✅ Slider "Antes y Después" para proyectos (opcional por proyecto)
 ✅ Contacto por WhatsApp, llamada y formulario de correo, con botón flotante

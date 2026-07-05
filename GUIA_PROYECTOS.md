@@ -77,4 +77,17 @@ npm run preview # revisa el resultado en el navegador
 
 ## Iconos y og-image
 
-El favicon, los iconos de app (`apple-touch-icon`, `icon-192/512`) y la imagen de vista previa social (`og-image.jpg`) se generan a partir del logo en `src/assets/logo/` con Sharp (`sharp`) y `png-to-ico`. Si cambias el logo, hay que regenerarlos y colocarlos en `public/`. Los `<link>` de iconos y las metaetiquetas Open Graph están en [`src/components/common/SEOHead.astro`](src/components/common/SEOHead.astro).
+Hay **dos cosas distintas** en la vista previa al compartir (p. ej. en WhatsApp): el **ícono chico** junto a la URL (el favicon) y la **imagen grande** (og-image).
+
+**Iconos / favicon** — se generan del logo (`src/assets/logo/logo-blanco.png`) con Sharp y `png-to-ico`, con un esquema **por tamaño**:
+
+- **Chico** (`favicon-16/32/48.png` + `favicon.ico`): solo las **tablas cruzadas** del logo → se ven nítidas en la pestaña del navegador y en Google.
+- **Grande** (`apple-touch-icon.png` 180px, `icon-192/512.png`): el **letrero completo** (nombre + tablas) → es lo que muestran WhatsApp, iOS y la PWA.
+
+> Razón del esquema: a 16px el letrero completo con texto se vuelve ilegible; por eso el favicon chico usa solo la marca de las tablas.
+
+**og-image (`public/og-image.jpg`)** — es la **imagen grande** al compartir (1200×630). No es el logo, sino una **foto de proyecto** (hoy el gazebo junto a la alberca), recortada con Sharp.
+
+Si cambias el logo o la foto de portada, hay que **regenerar** estos archivos y colocarlos en `public/`. Los `<link>` de iconos y las metaetiquetas Open Graph están en [`src/components/common/SEOHead.astro`](src/components/common/SEOHead.astro).
+
+> Nota sobre caché: WhatsApp y los navegadores **cachean** la vista previa y el favicon por enlace. Tras actualizar, para forzar una vista nueva comparte la URL con un sufijo (`?v=2`) o haz recarga forzada (Ctrl+Shift+R).

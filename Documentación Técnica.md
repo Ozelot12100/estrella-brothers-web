@@ -36,9 +36,10 @@ Arquitectura **Jamstack** con **SSG (Static Site Generation)**: Astro pre-render
 | :---- | :---- | :---- |
 | **Astro** | v5.x | Framework principal. 0 kB de JS por defecto. Optimización de imágenes nativa. |
 | **TypeScript** | Strict | Tipado estático; evita errores en producción. |
-| **Tailwind CSS** | v4.x | Utilidades; integración nativa con Astro. Modo oscuro por clase + remapeo de color a tonos ámbar/piedra. |
+| **Tailwind CSS** | v4.x | Utilidades; integración nativa con Astro. Sistema de diseño propio **"Artisan Timber & Earth"** con tokens `@theme` en `global.css` (sin modo oscuro). |
+| **@fontsource-variable** | Source Serif 4 + Work Sans | Fuentes auto-alojadas (sin CDN externo): serif para titulares, sans para el cuerpo. |
 | **npm** | Gestor de paquetes | Lockfile `package-lock.json`; es lo que usa Vercel (`installCommand`). |
-| **Astro Assets** | Built-in + Sharp | Convierte imágenes a WebP y genera `srcset`. |
+| **Astro Assets** | Built-in + Sharp | Convierte imágenes a WebP y genera `srcset`. También genera favicon/iconos y `og-image` (con `png-to-ico`). |
 | **img-comparison-slider** | Web Component | Slider "Antes/Después" sin framework pesado. |
 | **@astrojs/sitemap** | Integración | Sitemap automático. |
 | **astro-mcp** | Solo dev | Herramienta de desarrollo; no se incluye en el build de producción. |
@@ -69,11 +70,11 @@ src/
 │   ├── projects/          # Imágenes .webp procesadas
 │   └── logo/              # Logo de la marca (fuente de iconos/og-image)
 ├── components/
-│   ├── common/            # Header, Footer, SEOHead
+│   ├── common/            # Header, Footer, SEOHead, MobileBar
 │   ├── home/              # AboutSection, Testimonials, FAQ
 │   ├── pages/             # HomePage, ProjectsPage, ProjectDetailPage, ContactPage (cuerpo real)
 │   ├── projects/          # ProjectCard, BeforeAfterSlider
-│   └── ui/                # Button, ThemeToggle, LanguageSelector, ScrollReveal, WhatsAppButton
+│   └── ui/                # Button, LanguageSelector, ScrollReveal, WhatsAppButton
 ├── config/
 │   └── site.ts            # Datos del negocio
 ├── content/
@@ -87,7 +88,7 @@ src/
 │   ├── projects/ (index.astro, [slug].astro)
 │   └── es/ (index, contacto, proyectos/...)
 ├── styles/
-│   └── global.css         # Tailwind + tema + reduced-motion
+│   └── global.css         # Tailwind + diseño "Artisan Timber & Earth" (@theme) + tipografía + reduced-motion
 ├── utils/
 │   └── contact.ts         # waLink() (enlaces de WhatsApp)
 └── types/
@@ -103,3 +104,21 @@ Los archivos de `src/pages/**` son wrappers de ~5 líneas que importan el compon
 ## 8. SEO
 
 `src/components/common/SEOHead.astro` emite por página: `<title>`/descripción por idioma (desde `ui.ts`), canonical con dominio `www` y slash final, **hreflang** `en`/`es`/`x-default` (vía `translatePath`), Open Graph (con `og:locale` `en_US`/`es_US` y `og-image.jpg`) y JSON-LD `ProfessionalService`. El sitemap lo genera `@astrojs/sitemap`.
+
+## 9. Sistema de diseño ("Artisan Timber & Earth")
+
+La identidad visual se deriva del logo (letrero de madera). Todos los tokens se declaran con `@theme` en [`src/styles/global.css`](src/styles/global.css) y se consumen como utilidades de Tailwind (`bg-surface`, `text-primary`, `font-serif`, …). **No hay modo oscuro.**
+
+- **Superficies:** crema "papel" (`--color-surface: #fbf9f4`) y variantes.
+- **Primario:** umber quemado (`#271310` titulares/footer, `#3e2723` botones).
+- **Secundario:** roble tostado (`#75584d`).
+- **Canal:** verde WhatsApp (`#25d366`) como afordancia.
+- **Tipografía:** Source Serif 4 (titulares) + Work Sans (cuerpo), auto-alojadas con `@fontsource-variable` e importadas en `Layout.astro`.
+
+## 10. Iconos, favicon y og-image
+
+- **Iconos de app / favicon:** se generan del logo (`src/assets/logo/logo-blanco.png`) con Sharp + `png-to-ico`. Se usa un esquema **por tamaño** para que se lean bien en cada contexto:
+  - **Chico** (`favicon-16/32/48.png` + `favicon.ico`): solo las **tablas cruzadas** del logo, que se ven nítidas en la pestaña del navegador y en resultados de búsqueda.
+  - **Grande** (`apple-touch-icon.png` 180, `icon-192/512.png`): el **letrero completo** (nombre + tablas), que es lo que muestran WhatsApp, iOS y la PWA.
+- **og-image (`public/og-image.jpg`):** es la imagen **grande** que aparece al compartir el enlace. No es el logo, sino una **foto de proyecto** recortada a 1200×630 (actualmente el gazebo junto a la alberca).
+- Los `<link rel="icon">`/`apple-touch-icon`/`manifest` y las metaetiquetas Open Graph están en [`src/components/common/SEOHead.astro`](src/components/common/SEOHead.astro). Si cambia el logo o la foto de portada, hay que regenerar estos archivos y colocarlos en `public/`.
