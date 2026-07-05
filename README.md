@@ -4,7 +4,7 @@ Sitio estático bilingüe (inglés/español) de **Estrella Brothers Carpentry**,
 
 - **Producción:** https://www.estrellabrotherscarpentry.com
 - **Idiomas:** inglés (por defecto, sin prefijo) y español (bajo `/es/`)
-- **Contacto/leads:** WhatsApp y llamada telefónica (no hay formulario ni backend)
+- **Contacto/leads:** WhatsApp, llamada telefónica y un formulario de correo (vía `mailto:`, sin backend)
 
 ## 🚀 Estructura del proyecto
 
@@ -109,7 +109,8 @@ El proyecto está configurado para **Vercel** ([`vercel.json`](vercel.json)): bu
 ✅ Modo oscuro con preferencia del sistema y toggle
 ✅ Optimización automática de imágenes (WebP responsivo)
 ✅ Slider "Antes y Después" para proyectos (opcional por proyecto)
-✅ Contacto por WhatsApp y llamada, con botón flotante
+✅ Contacto por WhatsApp, llamada y formulario de correo, con botón flotante
+✅ Analítica: Vercel Web Analytics + Speed Insights (activar en el dashboard del proyecto)
 ✅ SEO local para Phoenix, AZ; 100% estático
 ✅ Accesibilidad: skip link, focus visible, `prefers-reduced-motion`, áreas táctiles ≥44px
 

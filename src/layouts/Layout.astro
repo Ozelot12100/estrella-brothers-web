@@ -54,5 +54,16 @@ const t = useTranslations(lang);
         </main>
         <Footer />
         <WhatsAppButton />
+
+        {/* Vercel Web Analytics + Speed Insights (servidos por el edge de Vercel).
+            Requieren activar Analytics y Speed Insights en el dashboard del proyecto. */}
+        {
+            import.meta.env.PROD && (
+                <>
+                    <script is:inline defer src="/_vercel/insights/script.js" />
+                    <script is:inline defer src="/_vercel/speed-insights/script.js" />
+                </>
+            )
+        }
     </body>
 </html>

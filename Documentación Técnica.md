@@ -7,7 +7,11 @@ Sitio web tipo portafolio para **Estrella Brothers Carpentry**, especialistas en
 - **Administrador:** desarrollador (gestión total del contenido).
 - **Cliente final:** dueño del negocio (Luis Estrella); envía fotos por WhatsApp/Email.
 - **Público objetivo:** propietarios de vivienda en Phoenix, Scottsdale, Mesa, Tempe y alrededores (muchos hispanohablantes).
-- **Objetivo principal:** mostrar la calidad del trabajo para generar leads por **WhatsApp y llamada** (no hay formulario ni backend).
+- **Objetivo principal:** mostrar la calidad del trabajo para generar leads por **WhatsApp, llamada y un formulario de correo** (`mailto:`, sin backend).
+
+> **Formulario de contacto:** en `ContactPage.astro` hay un formulario que arma un correo con `mailto:` al `author.email` de `site.ts` (abre la app de correo del visitante). No requiere backend ni claves. Para un envío en la página (sin abrir la app de correo) se puede cambiar a un servicio como Web3Forms/Formspree pegando su access key.
+
+> **Analítica:** `Layout.astro` inyecta (solo en producción) los scripts de **Vercel Web Analytics** y **Speed Insights** desde el edge de Vercel. Hay que activarlos en el dashboard del proyecto (Analytics / Speed Insights → Enable). No añaden dependencias npm.
 
 ## 2. Arquitectura de software
 

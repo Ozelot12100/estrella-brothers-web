@@ -73,6 +73,99 @@ const services = siteConfig.business.serviceTypes;
             </div>
         </div>
 
+        <!-- Email contact form (opens the visitor's mail app addressed to the business) -->
+        <div class="mb-12 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-6 md:p-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 text-center">
+                {t("form.title")}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">
+                {t("form.subtitle")}
+            </p>
+            <form
+                id="email-form"
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                novalidate
+            >
+                <div class="sm:col-span-2">
+                    <label for="cf-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("form.name")}
+                    </label>
+                    <input
+                        id="cf-name"
+                        name="name"
+                        type="text"
+                        required
+                        autocomplete="name"
+                        class="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                    />
+                </div>
+                <div>
+                    <label for="cf-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("form.email")}
+                    </label>
+                    <input
+                        id="cf-email"
+                        name="email"
+                        type="email"
+                        required
+                        autocomplete="email"
+                        class="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                    />
+                </div>
+                <div>
+                    <label for="cf-phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("form.phone")} <span class="text-gray-400 font-normal">({t("form.optional")})</span>
+                    </label>
+                    <input
+                        id="cf-phone"
+                        name="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        class="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                    />
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="cf-service" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("form.service")} <span class="text-gray-400 font-normal">({t("form.optional")})</span>
+                    </label>
+                    <select
+                        id="cf-service"
+                        name="service"
+                        class="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                    >
+                        <option value="">{t("form.serviceDefault")}</option>
+                        {services.map((service) => (
+                            <option value={t(`service.${service}`)}>{t(`service.${service}`)}</option>
+                        ))}
+                    </select>
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="cf-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("form.message")}
+                    </label>
+                    <textarea
+                        id="cf-message"
+                        name="message"
+                        rows="4"
+                        required
+                        placeholder={t("form.messagePlaceholder")}
+                        class="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-4 py-2.5 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent"
+                    ></textarea>
+                </div>
+                <div class="sm:col-span-2">
+                    <button
+                        type="submit"
+                        class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+                    >
+                        {t("form.submit")}
+                    </button>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+                        {t("form.note")}
+                    </p>
+                </div>
+            </form>
+        </div>
+
         <!-- Secondary info: Phone + Area -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 flex items-start gap-4">
@@ -101,3 +194,49 @@ const services = siteConfig.business.serviceTypes;
         </div>
     </div>
 </Layout>
+
+<script
+    is:inline
+    define:vars={{
+        mailTo: siteConfig.author.email,
+        subjectBase: t("form.subject"),
+        L: {
+            name: t("form.name"),
+            email: t("form.email"),
+            phone: t("form.phone"),
+            service: t("form.service"),
+            message: t("form.message"),
+        },
+    }}
+>
+    const form = document.getElementById("email-form");
+    form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const data = new FormData(form);
+        const get = (k) => (data.get(k) || "").toString().trim();
+        const name = get("name");
+        const email = get("email");
+        const phone = get("phone");
+        const service = get("service");
+        const message = get("message");
+
+        const subject = `${subjectBase} - ${name}`;
+        const lines = [
+            `${L.name}: ${name}`,
+            `${L.email}: ${email}`,
+            phone ? `${L.phone}: ${phone}` : null,
+            service ? `${L.service}: ${service}` : null,
+            "",
+            `${L.message}:`,
+            message,
+        ].filter((l) => l !== null);
+
+        const href =
+            `mailto:${mailTo}` +
+            `?subject=${encodeURIComponent(subject)}` +
+            `&body=${encodeURIComponent(lines.join("\n"))}`;
+        window.location.href = href;
+    });
+</script>
