@@ -67,51 +67,31 @@ const contactLinkText = isEn
 const contactHref = localizePath("contact", lang);
 ---
 
-<section
-    class="py-24 bg-white dark:bg-slate-900 transition-colors duration-300"
->
-    <div class="container mx-auto px-4 max-w-4xl">
-        <div class="text-center mb-16">
-            <div
-                class="inline-block px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-semibold rounded-full mb-6"
-            >
-                {badgeText}
-            </div>
-            <h2
-                class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
-            >
+<section class="bg-surface-container border-y border-outline-variant/30">
+    <div class="max-w-4xl mx-auto px-4 md:px-16 py-20 md:py-28">
+        <div class="text-center mb-14">
+            <p class="label-caps text-xs text-secondary mb-4">{badgeText}</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4">
                 {titleText}
             </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300">
-                {subtitleText}
-            </p>
+            <p class="text-on-surface-variant">{subtitleText}</p>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-3">
             {
                 faqs.map((faq, index) => (
-                    <div class="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-800 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
+                    <div class="border border-outline-variant/40 rounded overflow-hidden bg-surface-lowest hover:border-outline transition-colors">
                         <button
-                            class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-inset rounded-xl"
+                            class="faq-button w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-inset rounded"
                             aria-expanded="false"
                             aria-controls={`faq-answer-${index}`}
                         >
-                            <span class="text-lg font-bold text-gray-900 dark:text-gray-100 pr-8">
+                            <span class="font-serif text-lg font-semibold text-primary pr-8">
                                 {faq.question}
                             </span>
-                            <div class="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 faq-icon">
-                                <svg
-                                    class="w-6 h-6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M19 9l-7 7-7-7"
-                                    />
+                            <div class="w-9 h-9 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 faq-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </div>
                         </button>
@@ -119,7 +99,7 @@ const contactHref = localizePath("contact", lang);
                             id={`faq-answer-${index}`}
                             class="faq-content h-0 overflow-hidden transition-all duration-300 ease-in-out opacity-0"
                         >
-                            <div class="p-6 pt-0 text-gray-600 dark:text-gray-300 leading-relaxed border-t border-gray-100 dark:border-slate-700">
+                            <div class="p-5 md:p-6 pt-0 text-on-surface-variant leading-relaxed border-t border-outline-variant/30">
                                 {faq.answer}
                             </div>
                         </div>
@@ -129,12 +109,10 @@ const contactHref = localizePath("contact", lang);
         </div>
 
         <div class="mt-12 text-center">
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                {contactQuestionText}
-            </p>
+            <p class="text-on-surface-variant mb-4">{contactQuestionText}</p>
             <a
                 href={contactHref}
-                class="text-blue-700 dark:text-blue-400 font-bold hover:text-blue-800 dark:hover:text-blue-300 hover:underline transition-colors"
+                class="label-caps text-xs text-secondary hover:text-primary hover:underline transition-colors"
                 set:html={contactLinkText}
             />
         </div>

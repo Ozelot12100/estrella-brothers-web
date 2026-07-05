@@ -1,42 +1,89 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ── Sistema de diseño "Artisan Timber & Earth" (derivado del logo) ── */
 @theme {
-  /* Override default blue with warm wood/amber tones for rustic look */
-  --color-blue-50: var(--color-amber-50);
-  --color-blue-100: var(--color-amber-100);
-  --color-blue-200: var(--color-amber-200);
-  --color-blue-300: var(--color-amber-300);
-  --color-blue-400: var(--color-amber-400);
-  --color-blue-500: var(--color-amber-500);
-  --color-blue-700: var(--color-amber-600);
-  --color-blue-700: var(--color-amber-700);
-  --color-blue-800: var(--color-amber-800);
-  --color-blue-900: var(--color-amber-900);
-  --color-blue-950: var(--color-amber-950);
+  /* Superficies (crema "papel") */
+  --color-surface: #fbf9f4;
+  --color-surface-dim: #dbdad5;
+  --color-surface-lowest: #ffffff;
+  --color-surface-low: #f5f3ee;
+  --color-surface-container: #f0eee9;
+  --color-surface-high: #eae8e3;
+  --color-surface-highest: #e4e2dd;
 
-  /* Override slate with earthy stone tones */
-  --color-slate-50: var(--color-stone-50);
-  --color-slate-100: var(--color-stone-100);
-  --color-slate-200: var(--color-stone-200);
-  --color-slate-300: var(--color-stone-300);
-  --color-slate-400: var(--color-stone-400);
-  --color-slate-500: var(--color-stone-500);
-  --color-slate-600: var(--color-stone-600);
-  --color-slate-700: var(--color-stone-700);
-  --color-slate-800: var(--color-stone-800);
-  --color-slate-900: var(--color-stone-900);
-  --color-slate-950: var(--color-stone-950);
+  /* Texto */
+  --color-on-surface: #1b1c19;          /* carbón */
+  --color-on-surface-variant: #504442;  /* marrón apagado */
+
+  /* Bordes */
+  --color-outline: #827472;
+  --color-outline-variant: #d3c3c0;
+
+  /* Primario (umber quemado) */
+  --color-primary: #271310;             /* el más oscuro: titulares, footer */
+  --color-primary-container: #3e2723;   /* botones primarios */
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #ae8d87;
+
+  /* Secundario (roble tostado) */
+  --color-secondary: #75584d;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fed7ca;
+  --color-on-secondary-container: #795c51;
+
+  --color-inverse-surface: #30312e;
+
+  /* Verde WhatsApp (afordancia de canal) */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* Tipografía: serif con carácter para titulares, sans funcional para el resto */
+  --font-serif: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Work Sans Variable", system-ui, -apple-system, sans-serif;
+
+  /* Esquinas "lijadas": suave 4px */
+  --radius: 0.25rem;
 }
 
-@custom-variant dark (&:is(.dark *));
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+  }
+}
 
-/* Respeta la preferencia de movimiento reducido en animaciones no cubiertas por componentes */
+/* Textura de grano muy sutil sobre el fondo (rompe la planitud digital) */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Etiqueta tipo formulario/blueprint */
+.label-caps {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
   }
-  .animate-bounce-slow {
-    animation: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }

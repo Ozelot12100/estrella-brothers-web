@@ -1,11 +1,14 @@
 ---
+import "@fontsource-variable/source-serif-4";
+import "@fontsource-variable/work-sans";
+import "../styles/global.css";
 import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import SEOHead from "../components/common/SEOHead.astro";
 import WhatsAppButton from "../components/ui/WhatsAppButton.astro";
+import MobileBar from "../components/common/MobileBar.astro";
 import type { SEOProps } from "../types";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import "../styles/global.css";
 
 interface Props extends SEOProps {}
 
@@ -18,45 +21,23 @@ const t = useTranslations(lang);
 <html lang={lang} class="scroll-smooth">
     <head>
         <SEOHead {...seo} />
-        <script is:inline>
-            const theme = (() => {
-                if (
-                    typeof localStorage !== "undefined" &&
-                    localStorage.getItem("theme")
-                ) {
-                    return localStorage.getItem("theme");
-                }
-                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-                    return "dark";
-                }
-                return "light";
-            })();
-            if (theme === "light") {
-                document.documentElement.classList.remove("dark");
-            } else {
-                document.documentElement.classList.add("dark");
-            }
-            window.localStorage.setItem("theme", theme);
-        </script>
     </head>
-    <body
-        class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300"
-    >
+    <body class="min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+        <div class="grain-overlay" aria-hidden="true"></div>
         <a
             href="#main-content"
-            class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:ring-2 focus:ring-blue-700"
+            class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary-container focus:text-on-primary focus:px-4 focus:py-2 focus:rounded"
         >
             {t("a11y.skip")}
         </a>
         <Header />
-        <main id="main-content" class="flex-1 pt-24">
+        <main id="main-content" class="flex-1 relative z-[2]">
             <slot />
         </main>
         <Footer />
         <WhatsAppButton />
+        <MobileBar />
 
-        {/* Vercel Web Analytics + Speed Insights (servidos por el edge de Vercel).
-            Requieren activar Analytics y Speed Insights en el dashboard del proyecto. */}
         {
             import.meta.env.PROD && (
                 <>

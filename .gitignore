@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Stitch design reference (not part of the app)
+stitch_estrella_brothers_carpentry_website/
+stitch_estrella_brothers_carpentry_website.zip

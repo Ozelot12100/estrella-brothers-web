@@ -3,46 +3,41 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import ProjectCard from "@/components/projects/ProjectCard.astro";
+import Button from "@/components/ui/Button.astro";
+import { siteConfig } from "@/config/site";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { localizePath } from "@/i18n/routes";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Get all projects and sort by date (newest first)
 const allProjects = await getCollection("projects");
 const projects = allProjects.sort(
     (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
         b.data.date.getTime() - a.data.date.getTime(),
 );
 
-// Unique raw category values (used for filtering); labels are translated below
 const categories = [
-    ...new Set(
-        projects.map((p: CollectionEntry<"projects">) => p.data.category),
-    ),
+    ...new Set(projects.map((p: CollectionEntry<"projects">) => p.data.category)),
 ];
 ---
 
 <Layout title={t("projects.seoTitle")} description={t("projects.seoDescription")}>
-    <div class="container mx-auto px-4 py-16">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1
-                class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
-            >
+    <div class="max-w-7xl mx-auto px-4 md:px-16 py-16 md:py-24">
+        <!-- Encabezado -->
+        <div class="max-w-3xl mb-12">
+            <p class="label-caps text-xs text-secondary mb-4">{t("nav.projects")}</p>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">
                 {t("projects.title")}
             </h1>
-            <p
-                class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-            >
-                {t("projects.subtitle")}
-            </p>
+            <div class="w-24 h-1 bg-outline-variant/60"></div>
+            <p class="mt-4 text-lg text-on-surface-variant">{t("projects.subtitle")}</p>
         </div>
 
-        <!-- Category Filter -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <!-- Filtro por categoría -->
+        <div class="flex flex-wrap gap-2 mb-12">
             <button
-                class="category-filter active px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-700 dark:hover:border-blue-400"
+                class="category-filter active label-caps text-xs px-5 py-2 rounded border border-outline-variant/60 text-on-surface-variant hover:border-outline transition-colors"
                 data-category="All"
             >
                 {t("projects.filterAll")}
@@ -50,7 +45,7 @@ const categories = [
             {
                 categories.map((category) => (
                     <button
-                        class="category-filter px-6 py-2 rounded-full font-semibold transition-all duration-200 border-2 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-700 hover:border-blue-700 dark:hover:border-blue-400"
+                        class="category-filter label-caps text-xs px-5 py-2 rounded border border-outline-variant/60 text-on-surface-variant hover:border-outline transition-colors"
                         data-category={category}
                     >
                         {t(`category.${category}`)}
@@ -59,51 +54,61 @@ const categories = [
             }
         </div>
 
-        <!-- Projects Grid -->
+        <!-- Grid -->
         {
             projects.length > 0 ? (
                 <div
                     id="projects-grid"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
                 >
                     {projects.map((project: CollectionEntry<"projects">) => (
-                        <div
-                            class="project-item"
-                            data-category={project.data.category}
-                        >
+                        <div class="project-item" data-category={project.data.category}>
                             <ProjectCard project={project} />
                         </div>
                     ))}
                 </div>
             ) : (
                 <div class="text-center py-16">
-                    <p class="text-gray-500 dark:text-gray-400 text-lg">
-                        {t("projects.empty")}
-                    </p>
+                    <p class="text-on-surface-variant text-lg">{t("projects.empty")}</p>
                 </div>
             )
         }
     </div>
+
+    <!-- CTA -->
+    <section class="bg-surface-container border-t border-outline-variant/30">
+        <div class="max-w-4xl mx-auto px-4 md:px-16 py-16 md:py-24 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4">
+                {t("cta.title")}
+            </h2>
+            <p class="text-on-surface-variant mb-8 max-w-2xl mx-auto">{t("cta.subtitle")}</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <Button href={localizePath("contact", lang)} variant="primary" size="lg">
+                    {t("cta.button")}
+                </Button>
+                <Button href={`tel:${siteConfig.author.phone.e164}`} variant="outline" size="lg">
+                    {siteConfig.author.phone.display}
+                </Button>
+            </div>
+        </div>
+    </section>
 </Layout>
 
 <style>
-    /* El estado activo se maneja con una sola clase en vez de togglear utilidades desde JS */
     button.category-filter.active {
-        background-color: var(--color-blue-700);
-        border-color: var(--color-blue-700);
-        color: white;
+        background-color: var(--color-primary-container);
+        border-color: var(--color-primary-container);
+        color: var(--color-on-primary);
     }
 </style>
 
 <script>
-    // Category filter functionality
     document.addEventListener("DOMContentLoaded", () => {
         const filterButtons =
             document.querySelectorAll<HTMLButtonElement>(".category-filter");
         const projectItems =
             document.querySelectorAll<HTMLElement>(".project-item");
 
-        // Set initial styles for smooth animation
         projectItems.forEach((item) => {
             item.style.transition = "opacity 0.2s, transform 0.2s";
         });
@@ -111,13 +116,11 @@ const categories = [
         filterButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const category = button.getAttribute("data-category");
-
                 filterButtons.forEach((btn) => btn.classList.remove("active"));
                 button.classList.add("active");
 
                 projectItems.forEach((item) => {
                     const itemCategory = item.getAttribute("data-category");
-
                     if (category === "All" || itemCategory === category) {
                         item.style.display = "block";
                         setTimeout(() => {

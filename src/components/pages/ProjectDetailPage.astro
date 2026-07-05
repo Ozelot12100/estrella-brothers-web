@@ -38,113 +38,60 @@ const displayDescription =
 
 const formattedDate = new Intl.DateTimeFormat(
     lang === "es" ? "es-MX" : "en-US",
-    {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    },
+    { year: "numeric", month: "long", day: "numeric" },
 ).format(date);
 ---
 
-<Layout
-    title={displayTitle}
-    description={displayDescription}
-    type="article"
-    article={true}
->
-    <article class="container mx-auto px-4 py-16 max-w-4xl">
+<Layout title={displayTitle} description={displayDescription} type="article" article={true}>
+    <article class="max-w-4xl mx-auto px-4 md:px-16 py-14 md:py-20">
         <!-- Breadcrumb -->
         <nav class="mb-8 text-sm" aria-label="Breadcrumb">
-            <ol
-                class="flex items-center gap-2 text-gray-600 dark:text-gray-400"
-            >
-                <li>
-                    <a
-                        href={localizePath("home", lang)}
-                        class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
-                        >{t("detail.home")}</a
-                    >
-                </li>
-                <li>/</li>
-                <li>
-                    <a
-                        href={localizePath("projects", lang)}
-                        class="hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
-                        >{t("detail.projects")}</a
-                    >
-                </li>
-                <li>/</li>
-                <li class="text-gray-900 dark:text-gray-100 font-semibold">
-                    {displayTitle}
-                </li>
+            <ol class="flex items-center gap-2 text-on-surface-variant">
+                <li><a href={localizePath("home", lang)} class="hover:text-primary transition-colors">{t("detail.home")}</a></li>
+                <li aria-hidden="true">/</li>
+                <li><a href={localizePath("projects", lang)} class="hover:text-primary transition-colors">{t("detail.projects")}</a></li>
+                <li aria-hidden="true">/</li>
+                <li class="text-primary font-semibold">{displayTitle}</li>
             </ol>
         </nav>
 
-        <!-- Header -->
+        <!-- Encabezado -->
         <header class="mb-8">
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span
-                    class="bg-blue-700 text-white text-sm font-semibold px-4 py-1.5 rounded-full"
-                >
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="bg-primary-container text-on-primary label-caps text-xs px-4 py-1.5 rounded">
                     {t(`category.${category}`)}
                 </span>
                 {
                     tags &&
                         tags.map((tag: string) => (
-                            <span class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
+                            <span class="bg-secondary-container text-on-secondary-container label-caps text-[11px] px-3 py-1 rounded">
                                 {tag}
                             </span>
                         ))
                 }
             </div>
-
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">
                 {displayTitle}
             </h1>
-
-            <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-                <div class="flex items-center gap-2">
-                    <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        ></path>
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span>{location}</span>
-                </div>
-                <span>•</span>
+            <div class="flex items-center gap-3 text-on-surface-variant text-sm">
+                <span>{location}</span>
+                <span aria-hidden="true">·</span>
                 <time datetime={date.toISOString()}>{formattedDate}</time>
             </div>
         </header>
 
-        <!-- Before/After Comparison or Cover Image -->
+        <!-- Antes/después o portada -->
         {
             beforeImage && afterImage ? (
                 <div class="mb-12">
-                    <BeforeAfterSlider
-                        beforeImage={beforeImage}
-                        afterImage={afterImage}
-                        alt={displayTitle}
-                    />
+                    <BeforeAfterSlider beforeImage={beforeImage} afterImage={afterImage} alt={displayTitle} />
                 </div>
             ) : (
-                <div class="mb-12">
+                <div class="mb-12 rounded overflow-hidden border border-outline-variant/40">
                     <Image
                         src={coverImage}
                         alt={`${displayTitle} - ${location}`}
-                        class="w-full rounded-xl shadow-lg"
+                        class="w-full"
                         widths={[768, 1024, 1920]}
                         sizes="(max-width: 768px) 100vw, 1024px"
                     />
@@ -152,29 +99,26 @@ const formattedDate = new Intl.DateTimeFormat(
             )
         }
 
-        <!-- Project Description -->
-        <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
-            <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{displayDescription}</p>
-        </div>
+        <!-- Descripción -->
+        <p class="font-serif text-xl md:text-2xl text-on-surface leading-relaxed mb-10">
+            {displayDescription}
+        </p>
 
-        <!-- Project Content (from markdown) -->
-        <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+        <!-- Contenido markdown -->
+        <div class="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-primary prose-a:text-secondary mb-12">
             <Content />
         </div>
 
-        <!-- Call to Action -->
-        <div
-            class="bg-gradient-to-br from-blue-700 to-blue-800 dark:from-blue-800 dark:to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white"
-        >
-            <h2 class="text-3xl font-bold mb-4">{t("detail.ctaTitle")}</h2>
-            <p class="text-lg mb-8 opacity-90">
-                {t("detail.ctaSubtitle")}
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <!-- CTA -->
+        <div class="bg-primary text-on-primary rounded p-8 md:p-12 text-center">
+            <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4">{t("detail.ctaTitle")}</h2>
+            <p class="opacity-80 mb-8">{t("detail.ctaSubtitle")}</p>
+            <div class="flex flex-wrap gap-4 justify-center">
                 <Button
                     href={localizePath("contact", lang)}
-                    variant="secondary"
+                    variant="outline"
                     size="lg"
+                    class="!border-on-primary/40 !text-on-primary !bg-transparent hover:!bg-on-primary hover:!text-primary"
                 >
                     {t("detail.ctaButton")}
                 </Button>
@@ -182,31 +126,20 @@ const formattedDate = new Intl.DateTimeFormat(
                     href={`tel:${siteConfig.author.phone.e164}`}
                     variant="outline"
                     size="lg"
-                    class="border-white text-white hover:bg-white hover:text-blue-700"
+                    class="!border-on-primary/40 !text-on-primary !bg-transparent hover:!bg-on-primary hover:!text-primary"
                 >
                     {t("nav.callNow")}
                 </Button>
             </div>
         </div>
 
-        <!-- Back to Projects -->
-        <div class="mt-12 text-center">
+        <!-- Volver -->
+        <div class="mt-10 text-center">
             <a
                 href={localizePath("projects", lang)}
-                class="inline-flex items-center gap-2 text-blue-700 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors"
+                class="inline-flex items-center gap-2 label-caps text-xs text-secondary hover:text-primary transition-colors"
             >
-                <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 19l-7-7 7-7"></path>
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 {t("detail.backToProjects")}
             </a>
         </div>
