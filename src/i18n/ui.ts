@@ -260,7 +260,7 @@ export const ui = {
         'footer.areas': 'Service Areas',
         'footer.contact': 'Contact',
         'footer.rights': 'All rights reserved.',
-        'footer.developer': 'Developed by',
+        'footer.developer': 'Designed & developed by',
         'notfound.seoTitle': 'Page Not Found - 404',
         'notfound.seoDescription': "Sorry, we couldn't find the page you're looking for. Return home or contact us.",
         'notfound.title': 'Page Not Found',
