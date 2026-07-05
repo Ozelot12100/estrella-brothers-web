@@ -1,27 +1,22 @@
 ---
-title: "Home Addition"
-titleEs: "Adición al Hogar"
-date: 2025-11-20
-category: "Addition"
-location: "Gilbert, AZ"
-description: "Full room addition including foundation, framing, roofing tie-in, and interior finish to seamlessly expand the existing home."
-descriptionEs: "Adición completa de habitación con cimientos, framing, techado y acabados interiores para ampliar el hogar existente."
-coverImage: ../../assets/projects/additions-01.webp
-featured: false
-tags: ["Addition", "Framing", "Roofing"]
+title: "Lattice Patio Cover"
+titleEs: "Cubierta de Patio de Celosía"
+date: 2026-01-20
+category: "Patio"
+location: "Phoenix, AZ"
+description: "An attached lattice patio cover running along the back of the home, filtering sunlight over the windows and patio while keeping an open feel."
+descriptionEs: "Cubierta de celosía adosada a la parte trasera de la casa, que filtra la luz sobre las ventanas y el patio manteniendo una sensación abierta."
+coverImage: ../../assets/projects/pergola-windows.webp
+tags: ["Patio", "Lattice", "Shade Structure"]
 ---
 
-## Project Overview
+## Overview
 
-We built a full master bedroom and bathroom addition for a growing family in Gilbert. The new space integrates seamlessly with the original home's architecture.
+We ran an attached lattice cover along the back of the house to shade the windows and patio without closing off the space. The even spacing keeps light and air moving while cutting direct sun.
 
-### What We Did
-- Poured new foundation and stem wall
-- Framed all walls and roof to match existing structure
-- Tied new roof into existing roofline
-- Completed drywall, paint prep, and all trim
+### What we did
+- Attached a ledger and framed rafters along the wall line
+- Installed a uniform cross-lattice top for filtered shade
+- Kept clean sightlines over the windows and doors
 
-### Materials
-- Concrete block stem wall
-- Standard platform framing
-- Asphalt shingle roofing to match existing
+![Lattice cover framing in progress](../../assets/projects/pergola-build.webp)

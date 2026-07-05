@@ -1,27 +1,25 @@
 ---
-title: "Structural Framing"
-titleEs: "Framing Estructural"
-date: 2026-01-20
-category: "Framing"
+title: "Exposed-Beam Great Room Ceiling"
+titleEs: "Techo de Sala con Vigas Expuestas"
+date: 2026-02-10
+category: "Interior"
 location: "Phoenix, AZ"
-description: "Complete wood framing for a residential addition, including wall framing, headers, and roof structure meeting all local building codes."
-descriptionEs: "Framing completo de madera para una adición residencial, incluyendo paredes, vigas y estructura de techo conforme a los códigos locales."
-coverImage: ../../assets/projects/framing-01.webp
+description: "Interior remodel of a vaulted great room with exposed structural beams and a full tongue-and-groove wood plank ceiling."
+descriptionEs: "Remodelación interior de una sala abovedada con vigas estructurales expuestas y cielo completo de duela de madera machimbrada."
+coverImage: ../../assets/projects/beam-ceiling-room.webp
 featured: true
-tags: ["Framing", "Structural", "Residential"]
+tags: ["Interior", "Ceiling", "Finish Carpentry"]
 ---
 
-## Project Overview
+## Overview
 
-This project involved full structural framing for a home addition in Phoenix. Every wall, header, and roof connection was built to code and inspected by the city.
+For this interior remodel we opened up a vaulted great room and dressed the ceiling with exposed beams and warm wood planking, turning a plain space into the centerpiece of the home.
 
-### What We Did
-- Laid out and framed all exterior and interior walls
-- Installed LVL headers over all openings
-- Connected new structure to existing home with proper tie-ins
-- Coordinated with plumbing and electrical rough-in teams
+### What we did
+- Installed exposed structural beams along the vault
+- Clad the full ceiling in tongue-and-groove planking
+- Fit the work cleanly around arched windows and existing walls
 
-### Materials
-- KD Hem-Fir framing lumber
-- LVL (Laminated Veneer Lumber) headers
-- Simpson Strong-Tie connectors
+![Finished tongue-and-groove plank ceiling](../../assets/projects/beam-ceiling-planks.webp)
+
+![Vaulted ceiling with exposed beams](../../assets/projects/beam-ceiling-vault.webp)

@@ -1,27 +1,22 @@
 ---
-title: "Custom Carpentry & Woodwork"
-titleEs: "Carpintería y Trabajo en Madera"
-date: 2025-12-15
-category: "Carpentry"
-location: "Tempe, AZ"
-description: "Custom interior carpentry including built-in shelving, trim work, and finish carpentry throughout a full home renovation."
-descriptionEs: "Carpintería interior personalizada con repisas empotradas, molduras y acabados en madera en una renovación completa del hogar."
-coverImage: ../../assets/projects/carpentry-01.webp
-featured: true
-tags: ["Carpentry", "Interior", "Custom Work"]
+title: "Patio Ramada with Masonry Columns"
+titleEs: "Ramada de Patio con Columnas"
+date: 2026-01-28
+category: "Framing"
+location: "Phoenix, AZ"
+description: "A solid patio ramada framed on painted masonry columns, combining a durable structural base with an exposed wood beam roof."
+descriptionEs: "Ramada de patio estructurada sobre columnas de mampostería pintada, combinando una base durable con techo de vigas de madera expuestas."
+coverImage: ../../assets/projects/ramada-columns.webp
+tags: ["Ramada", "Framing", "Patio"]
 ---
 
-## Project Overview
+## Overview
 
-We completed all interior carpentry for a full home renovation in Tempe, including custom built-ins, crown molding, and finish trim throughout the entire house.
+This ramada pairs sturdy painted masonry columns with a wood-framed roof, giving a permanent, low-maintenance patio cover that stands up to the desert climate.
 
-### What We Did
-- Installed crown molding in all rooms
-- Built custom bookshelf and entertainment center
-- Hung all interior doors and installed hardware
-- Installed window and door casing throughout
+### What we did
+- Tied the wood structure into solid masonry columns
+- Framed the roof with exposed beams for a clean finished underside
+- Detailed the connections for strength and a tidy appearance
 
-### Materials
-- Poplar and MDF for painted applications
-- Red oak for natural wood finishes
-- Premium hardware from Emtek
+![Ramada structure and column detail](../../assets/projects/ramada-columns-b.webp)

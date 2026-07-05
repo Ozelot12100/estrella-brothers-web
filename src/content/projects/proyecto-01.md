@@ -1,27 +1,24 @@
 ---
-title: "Custom Deck Construction"
-titleEs: "Construcción de Deck Personalizado"
+title: "Poolside Gazebo with Pyramid Roof"
+titleEs: "Gazebo junto a Alberca con Techo Piramidal"
 date: 2026-02-12
-category: "Deck"
-location: "Scottsdale, AZ"
-description: "Full deck structure built from the ground up using pressure-treated lumber, concrete footings, and weather-resistant hardware."
-descriptionEs: "Estructura de deck construida desde cero con madera tratada, cimientos de concreto y herrajes resistentes a la intemperie."
-coverImage: ../../assets/projects/decks-01.webp
+category: "Patio"
+location: "Phoenix, AZ"
+description: "A freestanding backyard gazebo framed in solid lumber, with a hip-and-ridge pyramid roof and a tongue-and-groove wood ceiling built over a pool patio."
+descriptionEs: "Gazebo independiente para patio, estructurado en madera sólida, con techo piramidal a cuatro aguas y cielo de duela machimbrada, construido sobre el área de alberca."
+coverImage: ../../assets/projects/gazebo-pool.webp
 featured: true
-tags: ["Exterior", "Deck", "Pressure-Treated Wood"]
+tags: ["Gazebo", "Patio", "Framing"]
 ---
 
-## Project Overview
+## Overview
 
-We designed and built a custom outdoor deck from scratch for a residential home in Scottsdale. The structure was engineered to withstand Arizona's extreme heat and monsoon seasons.
+We designed and framed a freestanding gazebo over an existing pool patio. The pyramid roof was framed with dimensional lumber radiating to a center point, then finished underneath with a clean tongue-and-groove wood ceiling.
 
-### What We Did
-- Poured concrete footings anchored to frost depth
-- Installed 6x6 pressure-treated posts and beam framework
-- Used joist hangers and Simpson Strong-Tie hardware throughout
-- Final structure passed city inspection on first submission
+### What we did
+- Set posts and beams sized for the Arizona wind and sun exposure
+- Framed a four-hip pyramid roof converging to a center hub
+- Finished the underside in tongue-and-groove planking for a warm, seamless ceiling
+- Roughed in electrical for a center light fixture
 
-### Materials
-- Pressure-treated Douglas Fir framing
-- Hot-dipped galvanized hardware
-- Concrete Sonotube footings
+![Tongue-and-groove pyramid ceiling detail](../../assets/projects/gazebo-ceiling.webp)

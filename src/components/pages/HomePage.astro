@@ -15,13 +15,13 @@ import type { ServiceKey } from "@/types";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { localizePath } from "@/i18n/routes";
 
-import heroImg from "@/assets/projects/framing-01.webp";
-import framingImg from "@/assets/projects/framing-01.webp";
-import interiorImg from "@/assets/projects/interior-01.webp";
-import decksImg from "@/assets/projects/decks-01.webp";
-import carpentryImg from "@/assets/projects/carpentry-01.webp";
-import baseboardsImg from "@/assets/projects/baseboards-01.webp";
-import woodrotImg from "@/assets/projects/woodrot-01.webp";
+import heroImg from "@/assets/projects/gazebo-pool.webp";
+import framingImg from "@/assets/projects/ramada-columns.webp";
+import interiorImg from "@/assets/projects/beam-ceiling-room.webp";
+import decksImg from "@/assets/projects/pergola-yard.webp";
+import carpentryImg from "@/assets/projects/gazebo-ceiling.webp";
+import baseboardsImg from "@/assets/projects/beam-ceiling-planks.webp";
+import woodrotImg from "@/assets/projects/joinery-detail.webp";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -54,7 +54,7 @@ const featuredProjects = allProjects
 			<Image
 				src={heroImg}
 				alt=""
-				class="w-full h-full object-cover object-right"
+				class="w-full h-full object-cover object-center"
 				widths={[768, 1280, 1920]}
 				sizes="100vw"
 				loading="eager"

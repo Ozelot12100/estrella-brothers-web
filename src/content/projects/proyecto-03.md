@@ -1,27 +1,23 @@
 ---
-title: "Patio & Gazebo Build"
-titleEs: "Construcción de Patio y Gazebo"
-date: 2026-01-10
+title: "Custom Backyard Pergola"
+titleEs: "Pérgola de Patio a Medida"
+date: 2026-02-08
 category: "Patio"
-location: "Mesa, AZ"
-description: "Design and construction of a covered patio with custom gazebo structure, providing year-round outdoor living space."
-descriptionEs: "Diseño y construcción de patio cubierto con gazebo personalizado para disfrutar al aire libre durante todo el año."
-coverImage: ../../assets/projects/patios-01.webp
+location: "Phoenix, AZ"
+description: "A large attached pergola built to shade a backyard patio, with a rafter-and-lattice top sized for the Arizona sun."
+descriptionEs: "Pérgola amplia adosada a la casa para dar sombra al patio trasero, con estructura de vigas y celosía dimensionada para el sol de Arizona."
+coverImage: ../../assets/projects/pergola-yard.webp
 featured: true
-tags: ["Patio", "Gazebo", "Outdoor Living"]
+tags: ["Pergola", "Patio", "Shade Structure"]
 ---
 
-## Project Overview
+## Overview
 
-We built a covered outdoor living space complete with a custom gazebo for a family in Mesa. The structure was designed to provide shade during Arizona summers while remaining structurally sound through monsoon season.
+We built a large attached pergola to turn an exposed backyard into a usable, shaded living space. The rafters and lattice were laid out to cut the harsh afternoon sun while keeping an open, airy feel.
 
-### What We Did
-- Poured new concrete slab for patio extension
-- Built post-and-beam gazebo frame
-- Installed decorative rafter tails and fascia
-- Applied weatherproof finish to all exposed wood
+### What we did
+- Anchored posts and a ledger to the house for a solid attached structure
+- Framed evenly spaced rafters with a cross-lattice top
+- Sized and oriented the slats for effective shade in the Phoenix climate
 
-### Materials
-- 4x4 and 6x6 cedar posts
-- Douglas Fir rafters
-- Composite decking boards
+![Pergola framing against a clear Arizona sky](../../assets/projects/pergola-sky.webp)

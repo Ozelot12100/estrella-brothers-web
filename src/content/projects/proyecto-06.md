@@ -1,27 +1,22 @@
 ---
-title: "Interior Wall Framing"
-titleEs: "División de Interiores"
-date: 2025-10-05
-category: "Interior"
-location: "Chandler, AZ"
-description: "Interior partition wall framing for a commercial office space conversion, creating private offices and conference rooms from an open floor plan."
-descriptionEs: "Framing de paredes interiores para convertir un espacio comercial abierto en oficinas privadas y salas de juntas."
-coverImage: ../../assets/projects/interior-01.webp
-featured: false
-tags: ["Interior", "Framing", "Commercial"]
+title: "Precision Joinery & Structural Hardware"
+titleEs: "Ensambles de Precisión y Herrajes Estructurales"
+date: 2026-01-15
+category: "Carpentry"
+location: "Phoenix, AZ"
+description: "A close look at the joinery behind our outdoor structures — clean beam connections reinforced with galvanized structural hardware."
+descriptionEs: "Una mirada de cerca a los ensambles detrás de nuestras estructuras exteriores: conexiones de vigas limpias reforzadas con herrajes estructurales galvanizados."
+coverImage: ../../assets/projects/joinery-detail.webp
+tags: ["Carpentry", "Joinery", "Hardware"]
 ---
 
-## Project Overview
+## Overview
 
-We converted an open commercial space into a series of private offices and conference rooms in Chandler. All new partition walls were built to code with proper blocking for fixtures.
+Good structures live or die at the connections. On every project we cut tight joints and reinforce the load points with galvanized structural hardware, so the work is as sound as it is clean.
 
-### What We Did
-- Laid out and snapped all wall lines per architect's plan
-- Framed steel and wood partition walls
-- Installed blocking for TVs, whiteboards, and accessories
-- Coordinated openings for electrical and data conduit
+### What we did
+- Cut and fit beam-to-post joints for full bearing
+- Reinforced connections with galvanized structural ties
+- Detailed posts and beams for both strength and appearance
 
-### Materials
-- 3-5/8" metal studs for partition walls
-- Fire-rated drywall (Type X) where required
-- Solid blocking for all wall-mounted items
+![Reinforced post and beam connection](../../assets/projects/post-hardware.webp)
